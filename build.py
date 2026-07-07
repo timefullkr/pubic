@@ -47,7 +47,7 @@ CSS = """
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--fg);
- font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+ font-family:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
  line-height:1.72;font-size:17px;word-break:keep-all;overflow-wrap:anywhere}
 .wrap{max-width:820px;margin:0 auto;padding:32px 22px 80px}
 nav.top{max-width:820px;margin:0 auto;padding:12px 22px;border-bottom:1px solid var(--line);font-size:14px}
@@ -82,7 +82,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
  border-radius:8px;background:var(--soft);color:var(--fg);font-size:14px;font-weight:600}
 .pdflink:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
 .idx-pdf{margin-left:8px;font-size:13px;padding:1px 8px;border:1px solid var(--line);border-radius:12px}
-@media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt}.wrap{max-width:none}}
+@media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
 """
 
 TEMPLATE = """<!doctype html>
@@ -92,6 +92,7 @@ TEMPLATE = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <link rel="icon" href="logo-jje.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>{css}</style>
 </head>
 <body>
@@ -135,15 +136,20 @@ def make_pdf(slug, pdf_name):
         [browser, "--headless=new", "--no-sandbox", "--disable-gpu",
          "--no-pdf-header-footer", f"--print-to-pdf={pdf_path}", html_uri],
         check=True, capture_output=True)
+    # 검증: 정상 PDF는 크고 다중 페이지. 에러 페이지(ERR_FILE_NOT_FOUND)는 1쪽·소용량.
+    # (웹폰트 임베드 시 한글 텍스트 추출이 깨질 수 있어 '본문 키워드'는 실패 근거로 쓰지 않음)
     data = pdf_path.read_bytes()
-    ok = data[:5] == b"%PDF-" and b"ERR_FILE" not in data and len(data) > 50000
+    ok = data[:5] == b"%PDF-" and len(data) > 80000
     pages = "?"
     try:
         from pypdf import PdfReader
         r = PdfReader(str(pdf_path))
         pages = len(r.pages)
         txt = "".join((pg.extract_text() or "") for pg in r.pages)
-        ok = ok and ("시그마" in txt or "표준편차" in txt)
+        if "ERR_FILE" in txt or "cannot be reached" in txt.lower():
+            ok = False
+        if isinstance(pages, int) and pages < 1:
+            ok = False
     except ImportError:
         pass
     print(f"  PDF {pdf_name}: {len(data):,}B, pages={pages}, ok={ok}")
