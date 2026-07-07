@@ -18,12 +18,13 @@ import deck
 
 ROOT = Path(__file__).resolve().parent
 
-# (소스 md 파일명, 출력 슬러그, 브라우저 탭 제목, PDF 슬러그 또는 None, PPTX 슬러그 또는 None)
+# (소스 md, 출력 슬러그, 탭 제목, PDF|None, PPTX|None, 발표 슬라이드 HTML|None)
 PAGES = [
-    ("AI교육-패러다임.md", "paradigm.html", "AI 교육 패러다임", None, "paradigm.pptx"),
-    ("AX전환과 교육.md", "ax-transformation.html", "AX 전환과 교육", None, "ax-transformation.pptx"),
+    ("AI교육-패러다임.md", "paradigm.html", "AI 교육 패러다임", None, "paradigm.pptx", None),
+    ("AX전환과 교육.md", "ax-transformation.html", "AX 전환과 교육", None, "ax-transformation.pptx", None),
     ("고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경.md", "bloom-2sigma.html",
-     '고의숙 교육감의 "초개별화 맞춤형 교육"', "bloom-2sigma.pdf", "bloom-2sigma.pptx"),
+     '고의숙 교육감의 "초개별화 맞춤형 교육"', "bloom-2sigma.pdf", "bloom-2sigma.pptx",
+     "bloom-2sigma-slides.html"),
 ]
 
 # 마크다운 내부 링크(.md) → 사이트 내 .html 슬러그(구 파일명도 함께 매핑해 안전)
@@ -164,9 +165,11 @@ def make_pptx(md_name, pptx_name, deck_title):
 
 
 def main():
-    for md_name, slug, title, pdf, pptx in PAGES:
+    for md_name, slug, title, pdf, pptx, slides in PAGES:
         body = convert(md_name)
         links = []
+        if slides:
+            links.append(f'<a class="pdflink" href="{slides}">🖥 발표 슬라이드(웹)</a>')
         if pdf:
             links.append(f'<a class="pdflink" href="{pdf}">⬇ PDF로 저장·인쇄</a>')
         if pptx:
@@ -188,7 +191,7 @@ def main():
 AX(AI 전환)를 '도구 도입'이 아니라 사람·프로세스의 전환으로 보는 관점을 교육에 적용 — 교사 대체 우려, 에듀테크 과잉, 형평.</li>
 <li><a href="paradigm.html"><b>AI 교육 패러다임</b></a><a class="idx-pdf" href="paradigm.pptx">PPTX</a><br>
 AI 교육을 '무엇을'이 아니라 '어떻게'로 보는 관점 — 최고급 AI 접근의 공적 보장(토대), 활용 역량(핵심), 평가·교사 역할의 전환.</li>
-<li><a href="bloom-2sigma.html"><b>고의숙 교육감의 "초개별화 맞춤형 교육"</b></a><a class="idx-pdf" href="bloom-2sigma.pdf">PDF</a><a class="idx-pdf" href="bloom-2sigma.pptx">PPTX</a><br>
+<li><a href="bloom-2sigma.html"><b>고의숙 교육감의 "초개별화 맞춤형 교육"</b></a><a class="idx-pdf" href="bloom-2sigma-slides.html">발표</a><a class="idx-pdf" href="bloom-2sigma.pdf">PDF</a><a class="idx-pdf" href="bloom-2sigma.pptx">PPTX</a><br>
 핵심 공약 '초개별화 맞춤형 교육'의 이론적 근거 — 1:1 개인교습이 집단수업보다 2 표준편차 높은 성취를 낸다는 블룸의 실증(2 시그마 문제)을, AI로 대규모 실현한다.</li>
 </ul>"""
     index_html = TEMPLATE.format(title="제주교육 AI 플랫폼", css=CSS, body=index_body)

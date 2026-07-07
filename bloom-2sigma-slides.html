@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>초개별화 맞춤형 교육 · 발표 슬라이드</title>
+<link rel="icon" href="logo-jje.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --navy:#0f2a44; --navy2:#173b5c; --accent:#1fc7b1; --accent2:#7ee0d3;
+  --amber:#f4a23b; --ink:#182634; --muted:#66768a; --light:#f4f7fa; --line:#e4e9ef; --steel:#93a9c2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+  background:#08131f;color:var(--ink);overflow:hidden;word-break:keep-all;-webkit-font-smoothing:antialiased;
+}
+.deck{position:fixed;inset:0}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;justify-content:center;padding:8vh 8vw;overflow:hidden}
+.slide.active{display:flex;animation:in .5s cubic-bezier(.2,.7,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.slide.light{background:#fff;color:var(--ink)}
+.slide.navy{background:radial-gradient(130% 120% at 82% 8%, #1b4a74 0%, var(--navy) 52%, #0a1e33 100%);color:#fff}
+.slide.soft{background:linear-gradient(180deg,#fff 0%,var(--light) 100%);color:var(--ink)}
+
+.kicker{font-size:clamp(.8rem,1.35vw,1.05rem);font-weight:700;letter-spacing:.12em;color:var(--accent);
+  margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.kicker::before{content:"";width:26px;height:3px;background:var(--accent);border-radius:2px}
+.navy .kicker{color:var(--accent2)}
+
+h1.t{font-size:clamp(2.3rem,5.4vw,4.2rem);font-weight:800;line-height:1.08;letter-spacing:-.02em}
+.sub{font-size:clamp(1.2rem,2.4vw,1.9rem);font-weight:600;margin-top:1.1rem;color:var(--accent2)}
+.tag{font-size:clamp(.95rem,1.5vw,1.15rem);color:#c7d5e2;margin-top:2rem;font-weight:500}
+
+.slide h2{font-size:clamp(1.6rem,3.4vw,2.6rem);font-weight:800;line-height:1.14;letter-spacing:-.01em;color:var(--navy)}
+.slide.navy h2{color:#fff}
+.rule{width:60px;height:5px;background:var(--accent);border-radius:3px;margin:1rem 0 1.5rem}
+
+.secnum{font-size:clamp(4.5rem,13vw,10rem);font-weight:800;color:var(--accent);line-height:.9;letter-spacing:-.03em}
+.sectitle{font-size:clamp(1.9rem,4.2vw,3.2rem);font-weight:800;margin-top:.8rem}
+
+.statwrap{display:flex;align-items:center;gap:clamp(1.5rem,4vw,3.5rem);flex-wrap:wrap}
+.statnum{font-size:clamp(5rem,15vw,12rem);font-weight:800;color:var(--accent);line-height:.85;letter-spacing:-.04em;
+  text-shadow:0 8px 40px rgba(31,199,177,.28)}
+.statcap{max-width:44ch;margin-top:1.2rem}
+.statcap .big{font-size:clamp(1.2rem,2.2vw,1.75rem);font-weight:700;line-height:1.34}
+.statcap .small{font-size:clamp(.98rem,1.6vw,1.25rem);color:#c7d5e2;margin-top:1rem;line-height:1.5}
+
+ul.b{list-style:none;display:flex;flex-direction:column;gap:clamp(.7rem,1.6vh,1.25rem);max-width:62ch}
+ul.b li{position:relative;padding-left:2rem;font-size:clamp(1.05rem,1.8vw,1.45rem);line-height:1.42;font-weight:500}
+ul.b li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
+.navy ul.b li::before{background:var(--accent2)}
+ul.b li b{font-weight:800;color:var(--navy)}
+.navy ul.b li b{color:#fff}
+ul.b li .s{display:block;font-size:.82em;color:var(--muted);font-weight:500;margin-top:.2rem}
+ul.b li .s::before{content:"— "}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.2vw,1.8rem);margin-top:.2rem}
+.card{background:var(--light);border:1px solid var(--line);border-radius:18px;padding:clamp(1.2rem,2.4vw,1.9rem);box-shadow:0 10px 30px rgba(15,42,68,.06)}
+.card h3{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--navy);font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.card li{position:relative;padding-left:1.4rem;font-size:clamp(.98rem,1.5vw,1.22rem);line-height:1.38;font-weight:500}
+.card li::before{content:"·";position:absolute;left:.3rem;color:var(--accent);font-weight:800;font-size:1.3em;top:-.15em}
+.ic{width:1.5em;height:1.5em;stroke:var(--accent);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+.note{margin-top:1.3rem;font-size:clamp(1rem,1.6vw,1.3rem);color:var(--muted);font-weight:500}
+.note b{color:var(--navy)}
+
+.quotemark{font-size:clamp(4rem,10vw,8rem);color:var(--accent);line-height:.6;font-weight:800;margin-bottom:.3rem}
+.quote{font-size:clamp(1.5rem,3.1vw,2.5rem);font-weight:700;line-height:1.4;color:var(--navy);max-width:22ch}
+.attrib{margin-top:1.6rem;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--muted);font-weight:600}
+.closing{font-size:clamp(1.4rem,2.8vw,2.3rem);font-weight:700;line-height:1.42;max-width:26ch}
+
+/* 데이터/다이어그램 SVG */
+.vizrow{display:flex;align-items:center;gap:clamp(1.2rem,3vw,3rem);flex-wrap:wrap}
+.vizwrap{flex:1;min-width:280px;display:flex;justify-content:center}
+.viz{width:100%;height:auto;display:block}
+.viz.bells{max-width:540px}.viz.bars{max-width:560px}.viz.loop{max-width:760px}
+.chips{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem}
+.chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:.85rem 1.15rem;font-size:clamp(.95rem,1.5vw,1.2rem);max-width:34ch;line-height:1.35;font-weight:500}
+.chip b{color:var(--accent2);font-weight:800}
+.slide.light .chip{background:var(--light);border-color:var(--line)}
+.slide.light .chip b{color:var(--navy)}
+.capline{margin-top:1.2rem;font-size:clamp(1rem,1.65vw,1.3rem);color:#c7d5e2;font-weight:600}
+
+.wm{position:absolute;right:5vw;bottom:1vh;font-size:clamp(12rem,32vw,28rem);font-weight:800;color:rgba(255,255,255,.05);line-height:.8;pointer-events:none;user-select:none;letter-spacing:-.05em}
+
+.progress{position:fixed;top:0;left:0;height:4px;background:var(--accent);width:0;z-index:20;transition:width .35s ease}
+.foot{position:fixed;left:2.4vw;bottom:2vh;font-size:.82rem;color:var(--muted);z-index:20;font-weight:600}
+.counter{position:fixed;right:2.4vw;bottom:2vh;font-size:.82rem;color:var(--muted);z-index:20;font-weight:600;font-variant-numeric:tabular-nums}
+.hint{position:fixed;left:50%;bottom:2vh;transform:translateX(-50%);font-size:.78rem;color:var(--muted);z-index:20;opacity:.9;transition:opacity .6s;display:flex;gap:.5rem;align-items:center}
+.hint.hide{opacity:0}
+.hint kbd{background:rgba(120,140,160,.18);border:1px solid rgba(120,140,160,.35);border-radius:5px;padding:.05em .45em;font-family:inherit;font-size:.9em}
+
+@media (max-width:640px){.cards{grid-template-columns:1fr}.statwrap,.vizrow{flex-direction:column;align-items:flex-start}.counter,.foot{font-size:.72rem}}
+@media print{body{overflow:visible}.slide{display:flex!important;position:relative;inset:auto;height:100vh;page-break-after:always;animation:none}.progress,.foot,.counter,.hint{display:none!important}@page{size:landscape}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1 표지 -->
+  <section class="slide navy active">
+    <div class="wm">2σ</div>
+    <div class="kicker">제주도교육인수위원회 · 미래학력분과</div>
+    <h1 class="t">초개별화 맞춤형 교육</h1>
+    <div class="sub">블룸의 ‘2 시그마 문제’와 AI</div>
+    <div class="tag">고의숙 교육감 핵심공약의 이론적 배경</div>
+  </section>
+
+  <!-- 2 섹션01 -->
+  <section class="slide navy">
+    <div class="secnum">01</div><div class="rule"></div><div class="sectitle">문제 — ‘2 시그마’</div>
+  </section>
+
+  <!-- 3 2σ + 정규분포 곡선 -->
+  <section class="slide navy">
+    <div class="statwrap">
+      <div style="flex:1;min-width:280px">
+        <div class="statnum">2σ</div>
+        <div class="statcap">
+          <div class="big">1:1 개인교습을 받은 학생은 집단수업보다 약 2 표준편차 높은 성취를 낸다.</div>
+          <div class="small">그러나 모두에게 제공하기엔 비용이 너무 크다 — 블룸(1984)의 ‘2 시그마 문제’.</div>
+        </div>
+      </div>
+      <div class="vizwrap">
+        <svg class="viz bells" viewBox="0 0 520 270" role="img" aria-label="전통 수업과 개인교습의 성취 분포가 2 표준편차 이동">
+          <defs>
+            <marker id="aR" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#7ee0d3"/></marker>
+            <marker id="aL" markerWidth="9" markerHeight="9" refX="0" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6Z" fill="#7ee0d3"/></marker>
+          </defs>
+          <line x1="20" y1="220" x2="500" y2="220" stroke="rgba(255,255,255,.28)" stroke-width="1.5"/>
+          <path d="M40,220 C112,220 132,66 182,66 C232,66 252,220 322,220 Z" fill="rgba(147,169,194,.22)" stroke="#93a9c2" stroke-width="2.5"/>
+          <path d="M200,220 C270,220 290,50 340,50 C390,50 410,220 480,220 Z" fill="rgba(31,199,177,.26)" stroke="#1fc7b1" stroke-width="3"/>
+          <line x1="182" y1="66" x2="182" y2="220" stroke="#93a9c2" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <line x1="340" y1="50" x2="340" y2="220" stroke="#1fc7b1" stroke-width="1.4" stroke-dasharray="4 5"/>
+          <line x1="182" y1="34" x2="340" y2="34" stroke="#7ee0d3" stroke-width="2" marker-start="url(#aL)" marker-end="url(#aR)"/>
+          <text x="261" y="26" text-anchor="middle" fill="#7ee0d3" font-size="20" font-weight="800">2σ</text>
+          <text x="182" y="243" text-anchor="middle" fill="#c7d5e2" font-size="15">전통 수업</text>
+          <text x="340" y="243" text-anchor="middle" fill="#eafffb" font-size="15" font-weight="700">1:1 개인교습</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 실험 설계 (아이콘 카드) -->
+  <section class="slide light">
+    <div class="kicker">실증 근거</div>
+    <h2>실험 설계 — 세 조건 무작위 비교</h2>
+    <div class="rule"></div>
+    <div class="cards">
+      <div class="card">
+        <h3><svg class="ic" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-4.5 8a2 2 0 0 0 1.8 3h9.4a2 2 0 0 0 1.8-3L14 9V3"/><path d="M7.5 15h9"/></svg>설계</h3>
+        <ul>
+          <li>시카고대 아나니아·버크(1982~84)</li>
+          <li>4·5·8학년, 3주·11차시 반복 검증</li>
+          <li>초기 적성·수업시간 동일하게 통제</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5M3 16l9 5 9-5"/></svg>세 가지 학습 조건</h3>
+        <ul>
+          <li>① 전통 집단수업 (교사 1 : 다수)</li>
+          <li>② 완전학습 (형성평가 + 교정)</li>
+          <li>③ 1:1·소집단 개인교습</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 결과 막대그래프 -->
+  <section class="slide light">
+    <div class="kicker">결과</div>
+    <h2>‘2 시그마’ 효과 — 목표 도달률</h2>
+    <div class="rule"></div>
+    <div class="vizrow">
+      <div class="vizwrap">
+        <svg class="viz bars" viewBox="0 0 560 300" role="img" aria-label="목표 도달률: 전통 20퍼센트, 완전학습 70퍼센트, 개인교습 90퍼센트">
+          <line x1="60" y1="250" x2="530" y2="250" stroke="var(--line)" stroke-width="2"/>
+          <!-- 전통 -->
+          <rect x="110" y="210" width="90" height="40" rx="6" fill="#9fb2c6"/>
+          <text x="155" y="198" text-anchor="middle" fill="#66768a" font-size="24" font-weight="800">20%</text>
+          <text x="155" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">전통 수업</text>
+          <!-- 완전학습 -->
+          <rect x="250" y="110" width="90" height="140" rx="6" fill="#3d6a94"/>
+          <text x="295" y="98" text-anchor="middle" fill="#0f2a44" font-size="24" font-weight="800">70%</text>
+          <text x="295" y="150" text-anchor="middle" fill="#eaf4ff" font-size="17" font-weight="800">+1σ</text>
+          <text x="295" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">완전학습</text>
+          <!-- 개인교습 -->
+          <rect x="390" y="70" width="90" height="180" rx="6" fill="#1fc7b1"/>
+          <text x="435" y="58" text-anchor="middle" fill="#0f7a6c" font-size="24" font-weight="800">90%</text>
+          <text x="435" y="120" text-anchor="middle" fill="#04302a" font-size="17" font-weight="800">+2σ</text>
+          <text x="435" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">1:1 개인교습</text>
+        </svg>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div class="note" style="margin-top:0">상위 <b>20%만</b> 도달하던 수준을 완전학습 <b>70%</b>·개인교습 <b>90%</b>가 도달.</div>
+        <div class="note">타고난 적성보다 <b>‘학습 조건’</b>이 성취를 결정 — 적성–성취 상관 +.60 → +.25.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 핵심 메시지 -->
+  <section class="slide soft">
+    <div class="kicker">핵심 메시지</div>
+    <h2>‘2 시그마 문제’란</h2>
+    <div class="rule"></div>
+    <ul class="b">
+      <li><b>대부분의 학생</b>이 이 높은 수준에 도달할 잠재력을 가지고 있다.</li>
+      <li>가장 좋은 조건(1:1)에서 <b>2σ</b> 향상 — 그러나 사회 전체에 제공하기엔 비용이 너무 크다.</li>
+      <li>핵심 과제: 1:1 교습에 <b>근접하면서도 대규모로 가능한</b> 방법을 찾는 것.</li>
+    </ul>
+  </section>
+
+  <!-- 7 인용 -->
+  <section class="slide soft">
+    <div class="quotemark">“</div>
+    <div class="quote">일대일 개인교습에 근접한 효과를 내면서도, 대규모로 실현 가능한 집단 교수·학습 조건을 찾을 수 있는가?</div>
+    <div class="attrib">— Benjamin Bloom, ‘The 2 Sigma Problem’ (1984)</div>
+  </section>
+
+  <!-- 8 섹션02 -->
+  <section class="slide navy">
+    <div class="secnum">02</div><div class="rule"></div><div class="sectitle">해법 — AI, 고전에서 실증으로</div>
+  </section>
+
+  <!-- 9 ITS -->
+  <section class="slide light">
+    <div class="kicker">① 생성형 AI 이전</div>
+    <h2>지능형 튜터링 시스템(ITS)</h2>
+    <div class="rule"></div>
+    <ul class="b">
+      <li><b>VanLehn(2011)</b> — 단계형 ITS는 인간 교사에 근접한 효과.</li>
+      <li><b>Kulik &amp; Fletcher(2016)</b> — ITS 중앙값 <b>+0.66σ</b>, 92% 연구에서 전통수업 능가.<span class="s">효과는 평가도구·구현 충실도에 좌우</span></li>
+      <li>‘2σ’는 인간만의 값이 아니라, <b>잘 설계된 기술로 좁힐 수 있는 격차</b>다.</li>
+    </ul>
+  </section>
+
+  <!-- 10 RCT -->
+  <section class="slide light">
+    <div class="kicker">② 생성형 AI 시대 (2023~)</div>
+    <h2>최신 무작위통제연구(RCT)</h2>
+    <div class="rule"></div>
+    <ul class="b">
+      <li><b>Kestin 외(2025, 하버드)</b> — 잘 설계된 AI 튜터가 활동중심 수업보다 <b>2배 이상</b> 학습 이득, 더 짧은 시간에.</li>
+      <li><b>나이지리아 대규모 RCT(World Bank, 2024)</b> — 생성형 AI 튜터 영어수업, 유의한 성취 향상.</li>
+      <li>공통점 — “AI를 쓰면”이 아니라 <b>“잘 설계된 AI가”</b> 오른다.</li>
+    </ul>
+  </section>
+
+  <!-- 11 작동 원리 (루프 다이어그램) -->
+  <section class="slide navy">
+    <div class="kicker">어떻게 2σ를 푸는가</div>
+    <h2>작동 원리 — 숙달을 향한 루프</h2>
+    <div class="rule"></div>
+    <div class="vizwrap">
+      <svg class="viz loop" viewBox="0 0 760 244" role="img" aria-label="형성평가 진단에서 맞춤 교정, 재도전으로 이어져 숙달까지 반복되는 루프">
+        <defs><marker id="lp" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#7ee0d3"/></marker></defs>
+        <g font-weight="700">
+          <rect x="24" y="34" width="196" height="86" rx="16" fill="#fff"/>
+          <text x="122" y="70" text-anchor="middle" fill="#0f2a44" font-size="20">형성평가</text>
+          <text x="122" y="96" text-anchor="middle" fill="#66768a" font-size="15">진단</text>
+          <rect x="282" y="34" width="196" height="86" rx="16" fill="#fff"/>
+          <text x="380" y="70" text-anchor="middle" fill="#0f2a44" font-size="20">맞춤 교정</text>
+          <text x="380" y="96" text-anchor="middle" fill="#66768a" font-size="15">설명·힌트</text>
+          <rect x="540" y="34" width="196" height="86" rx="16" fill="#fff"/>
+          <text x="638" y="70" text-anchor="middle" fill="#0f2a44" font-size="20">재도전</text>
+          <text x="638" y="96" text-anchor="middle" fill="#66768a" font-size="15">재출제</text>
+        </g>
+        <line x1="226" y1="77" x2="276" y2="77" stroke="#7ee0d3" stroke-width="3" marker-end="url(#lp)"/>
+        <line x1="484" y1="77" x2="534" y2="77" stroke="#7ee0d3" stroke-width="3" marker-end="url(#lp)"/>
+        <path d="M632,126 C632,198 128,198 128,132" fill="none" stroke="#7ee0d3" stroke-width="3" stroke-dasharray="2 0" marker-end="url(#lp)"/>
+        <text x="380" y="228" text-anchor="middle" fill="#7ee0d3" font-size="17" font-weight="800">숙달할 때까지 반복</text>
+      </svg>
+    </div>
+    <div class="chips">
+      <div class="chip"><b>AI = 학생별 튜터</b> — 숙달을 향해 이 루프를 스스로 돈다(30명이면 30개 루프 동시에)</div>
+      <div class="chip"><b>교사 = 지휘자</b> — 서로 다른 속도의 학생을 조율·개입</div>
+    </div>
+    <div class="capline">초개별화 = 완전학습의 개별화 + AI 적응형 대화를, <b style="color:var(--accent2)">대규모로</b>.</div>
+  </section>
+
+  <!-- 12 콘텐츠가 아니라 조건 (아이콘 카드) -->
+  <section class="slide light">
+    <div class="kicker">그러나 신중하게</div>
+    <h2>‘콘텐츠’가 아니라 ‘조건’에 투자한다</h2>
+    <div class="rule"></div>
+    <div class="cards">
+      <div class="card">
+        <h3><svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>무엇에 투자하나</h3>
+        <ul>
+          <li>ⓐ 좋은 재료 — 고성능 AI의 공적 보장</li>
+          <li>ⓑ 좋은 주방 — 도구·전량 기록·환류</li>
+          <li>ⓒ 교사 역량 — 좋은 수업 설계</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3><svg class="ic" viewBox="0 0 24 24" style="stroke:#c65a5a"><circle cx="12" cy="12" r="9"/><path d="M15 9l-6 6M9 9l6 6"/></svg>무엇이 아닌가</h3>
+        <ul>
+          <li>제주가 콘텐츠를 직접 찍어내는 일이 아니다</li>
+          <li>콘텐츠는 교사·확장 생태계의 몫</li>
+          <li>근거는 축적 중 → 자체 시범으로 검증</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 섹션03 -->
+  <section class="slide navy">
+    <div class="secnum">03</div><div class="rule"></div><div class="sectitle">제주 초개별화로</div>
+  </section>
+
+  <!-- 14 시사점 -->
+  <section class="slide light">
+    <div class="kicker">시사점</div>
+    <h2>핵심공약과의 연결</h2>
+    <div class="rule"></div>
+    <ul class="b" style="max-width:66ch">
+      <li><b>2 시그마 문제의 해법</b> — AI가 비용 장벽을 낮춰 공약의 논리적 출발점이 된다.</li>
+      <li><b>초개별화의 이론적 뿌리</b> — 블룸 완전학습(형성평가+교정)의 AI·디지털 구현.</li>
+      <li><b>형평성</b> — “적성보다 학습 조건” → AI 접근 공적 보장이 출발선·격차를 해소.</li>
+      <li><b>목표 수준</b> — “대부분의 학생이 높은 수준 도달 가능” = ‘한 아이도 놓치지 않는’ 책임교육.</li>
+    </ul>
+  </section>
+
+  <!-- 15 맺음 -->
+  <section class="slide navy">
+    <div class="wm">✓</div>
+    <div class="kicker">한 줄로</div>
+    <div class="closing">블룸(1984)이 비용 때문에 미룬 ‘1:1 교습의 대규모 실현’을, AI가 <b style="color:var(--accent2)">실시간 개별화와 환류</b>로 푼다 — 학생 한 명 한 명에게 개인교습에 준하는 조건을, 대규모로.</div>
+  </section>
+
+</div>
+
+<div class="foot">초개별화 맞춤형 교육 · 블룸 2σ</div>
+<div class="counter" id="counter">1 / 15</div>
+<div class="hint" id="hint"><kbd>←</kbd><kbd>→</kbd> 또는 클릭으로 이동 · <kbd>F</kbd> 전체화면</div>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var progress=document.getElementById('progress'),counter=document.getElementById('counter'),hint=document.getElementById('hint');
+  var i=0,N=slides.length;
+  function show(n){i=Math.max(0,Math.min(N-1,n));slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    progress.style.width=((i+1)/N*100)+'%';counter.textContent=(i+1)+' / '+N;history.replaceState(null,'','#'+(i+1));}
+  document.addEventListener('keydown',function(e){
+    if(['ArrowRight','ArrowDown',' ','PageDown'].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key)>-1){e.preventDefault();show(i-1);}
+    else if(e.key==='Home'){show(0);}else if(e.key==='End'){show(N-1);}
+    else if(e.key==='f'||e.key==='F'){var d=document;d.fullscreenElement?d.exitFullscreen():d.documentElement.requestFullscreen();}});
+  document.addEventListener('click',function(e){if(e.target.closest('a'))return;show(e.clientX/window.innerWidth>0.35?i+1:i-1);});
+  var sx=null;
+  document.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;},{passive:true});
+  document.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>45)show(i+(dx<0?1:-1));sx=null;},{passive:true});
+  setTimeout(function(){hint.classList.add('hide');},4200);
+  show((parseInt((location.hash||'').slice(1),10)||1)-1);
+})();
+</script>
+</body>
+</html>
