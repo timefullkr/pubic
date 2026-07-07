@@ -137,6 +137,8 @@ ul.b li .s::before{content:"— "}
 .refs li{position:relative;padding-left:1.8rem;font-size:clamp(.984rem,1.56vw,1.224rem);line-height:1.55;color:var(--muted);counter-increment:ref}
 .refs li::before{content:counter(ref);position:absolute;left:0;top:.1em;width:1.25em;height:1.25em;border-radius:50%;background:var(--card-d);border:1px solid rgba(255,255,255,.12);color:var(--ink-d);font-size:.85em;font-weight:700;display:flex;align-items:center;justify-content:center}
 .refs li i{font-style:italic}
+.refs a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.22);text-underline-offset:3px}
+.refs a:hover{color:var(--accent2);text-decoration-color:var(--accent2)}
 .cite{margin-top:1.4rem;padding:.9rem 1.2rem;background:var(--card-d);border-left:4px solid var(--accent);border-radius:6px;font-size:clamp(1.056rem,1.62vw,1.296rem);line-height:1.6;color:var(--body-d);max-width:78ch}
 .cite b{color:var(--ink-d)}
 .srcline{margin-top:1.2rem;font-size:clamp(.936rem,1.44vw,1.14rem);color:var(--muted)}
@@ -583,12 +585,12 @@ body.tools-on .ftools{display:flex}
     </div>
     <div class="bodyarea">
       <ol class="refs">
-        <li>Bloom, B. S. (1984). The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring. <i>Educational Researcher</i>, 13(6), 4–16.</li>
-        <li>Bloom, B. S. (1968). Learning for Mastery. <i>Evaluation Comment</i>, 1(2).</li>
-        <li>VanLehn, K. (2011). The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems, and Other Tutoring Systems. <i>Educational Psychologist</i>, 46(4), 197–221.</li>
-        <li>Kulik, J. A., &amp; Fletcher, J. D. (2016). Effectiveness of Intelligent Tutoring Systems: A Meta-Analytic Review. <i>Review of Educational Research</i>, 86(1), 42–78.</li>
-        <li>Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning. <i>Scientific Reports</i>, 15, 17458.</li>
-        <li>Brookings (2024). <i>What the research shows about generative AI in tutoring</i> — World Bank 나이지리아 RCT 정리.</li>
+        <li><a href="https://doi.org/10.3102/0013189X013006004" target="_blank" rel="noopener">Bloom, B. S. (1984). The 2 Sigma Problem: The Search for Methods of Group Instruction as Effective as One-to-One Tutoring. <i>Educational Researcher</i>, 13(6), 4–16.</a></li>
+        <li><a href="https://eric.ed.gov/?id=ED053419" target="_blank" rel="noopener">Bloom, B. S. (1968). Learning for Mastery. <i>Evaluation Comment</i>, 1(2).</a></li>
+        <li><a href="https://doi.org/10.1080/00461520.2011.611369" target="_blank" rel="noopener">VanLehn, K. (2011). The Relative Effectiveness of Human Tutoring, Intelligent Tutoring Systems, and Other Tutoring Systems. <i>Educational Psychologist</i>, 46(4), 197–221.</a></li>
+        <li><a href="https://eric.ed.gov/?id=EJ1090502" target="_blank" rel="noopener">Kulik, J. A., &amp; Fletcher, J. D. (2016). Effectiveness of Intelligent Tutoring Systems: A Meta-Analytic Review. <i>Review of Educational Research</i>, 86(1), 42–78.</a></li>
+        <li><a href="https://www.nature.com/articles/s41598-025-97652-6" target="_blank" rel="noopener">Kestin, G., Miller, K., Klales, A., Milbourne, T., &amp; Ponti, G. (2025). AI tutoring outperforms in-class active learning. <i>Scientific Reports</i>, 15, 17458.</a></li>
+        <li><a href="https://www.brookings.edu/articles/what-the-research-shows-about-generative-ai-in-tutoring/" target="_blank" rel="noopener">Brookings (2026). <i>What the research shows about generative AI in tutoring</i> — World Bank 나이지리아 RCT 정리.</a></li>
       </ol>
       <div class="cite"><b>인용 시 요지</b> — “블룸(1984)은 1:1 개인교습이 집단수업보다 2 표준편차 높은 성취를 낸다는 것을 실증하고, 이를 대규모로 실현할 방법을 찾는 것을 ‘2 시그마 문제’로 제기했다. AI 활용 맞춤형 교육은 그 비용 장벽을 낮춰 이 문제를 풀 현실적 수단이다.”</div>
       <div class="srcline">원문: 「고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경」(bloom-2sigma.html) · 제주도교육감인수위원회 미래학력분과</div>
