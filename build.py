@@ -22,7 +22,7 @@ PAGES = [
     ("AI교육-패러다임.md", "paradigm.html", "AI 교육 패러다임", None),
     ("AX전환과 교육.md", "ax-transformation.html", "AX 전환과 교육", None),
     ("고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경.md", "bloom-2sigma.html",
-     '고의숙 교육감 · "초개별화 맞춤형 교육" 이론적 배경', "bloom-2sigma.pdf"),
+     '고의숙 교육감의 "초개별화 맞춤형 교육"', "bloom-2sigma.pdf"),
 ]
 
 # 마크다운 내부 링크(.md) → 사이트 내 .html 슬러그(구 파일명도 함께 매핑해 안전)
