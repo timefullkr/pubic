@@ -593,6 +593,8 @@ body.tools-on .ftools{display:flex}
   <button class="cswatch" data-c="#f6c945" title="노란 펜" style="background:#f6c945"></button>
   <button class="cswatch" data-c="#34c96f" title="초록 펜" style="background:#34c96f"></button>
   <span class="sep"></span>
+  <button id="rectBtn" title="사각형 — 드래그로 그리기" aria-label="사각형"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="1.5"/></svg></button>
+  <button id="lineBtn" title="직선 — 드래그로 그리기" aria-label="직선"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19L19 5"/></svg></button>
   <button id="textBtn" title="텍스트 넣기 — 클릭 후 원하는 위치를 클릭해 입력" aria-label="텍스트" style="font-weight:800">T</button>
   <button id="undoBtn" title="마지막 주석 취소" aria-label="되돌리기"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/></svg></button>
   <button id="clearBtn" title="이 슬라이드 주석 모두 지우기" aria-label="지우기"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H8.5L3 14.5a2 2 0 0 1 0-2.8l8-8a2 2 0 0 1 2.8 0l6.7 6.7a2 2 0 0 1 0 2.8L14 20"/><path d="M7 11l6 6"/></svg></button>
@@ -642,11 +644,14 @@ body.tools-on .ftools{display:flex}
     fc.isDrawingMode=(mode==='draw'&&!placingText&&!editingText);
     if(mode==='draw')fc.freeDrawingBrush.color=color;
     fc.selection=(mode==='select');
+    fc.skipTargetFind=(mode!=='select'&&!placingText);
     fc.defaultCursor=placingText?'text':(mode==='select'?'default':'crosshair');
     [].forEach.call(ft.querySelectorAll('button'),function(b){b.classList.remove('active');});
     if(on&&placingText)document.getElementById('textBtn').classList.add('active');
     else if(mode==='select')document.getElementById('selBtn').classList.add('active');
-    else if(mode==='draw'){var sw=ft.querySelector('.cswatch[data-c="'+color+'"]');if(sw)sw.classList.add('active');}
+    else if(mode==='rect')document.getElementById('rectBtn').classList.add('active');
+    else if(mode==='line')document.getElementById('lineBtn').classList.add('active');
+    if(mode==='draw'||mode==='rect'||mode==='line'){var sw=ft.querySelector('.cswatch[data-c="'+color+'"]');if(sw)sw.classList.add('active');}
     if(!on){placingText=false;fc.discardActiveObject();fc.renderAll();}}
   var annBtn=document.getElementById('annToggle');
   function setTools(on){document.body.classList.toggle('tools-on',on);annBtn.classList.toggle('active',on);
@@ -667,8 +672,11 @@ body.tools-on .ftools{display:flex}
   window.__deleteInk=function(){var a=fc.getActiveObject();if(a&&!a.isEditing){fc.remove(a);fc.renderAll();}};
   ft.addEventListener('click',function(e){e.stopPropagation();
     var b=e.target.closest('button');if(!b)return;
-    if(b.classList.contains('cswatch')){color=b.getAttribute('data-c');mode='draw';placingText=false;apply();return;}
+    if(b.classList.contains('cswatch')){color=b.getAttribute('data-c');
+      if(mode!=='rect'&&mode!=='line')mode='draw';placingText=false;apply();return;}
     if(b.id==='selBtn'){mode='select';placingText=false;apply();}
+    else if(b.id==='rectBtn'){mode='rect';placingText=false;apply();}
+    else if(b.id==='lineBtn'){mode='line';placingText=false;apply();}
     else if(b.id==='textBtn'){if(mode==='off')mode='draw';placingText=true;apply();}
     else if(b.id==='undoBtn'){var os=fc.getObjects();if(os.length){fc.remove(os[os.length-1]);fc.renderAll();}}
     else if(b.id==='clearBtn'){fc.clear();delete inkStore[i];}
@@ -685,6 +693,19 @@ body.tools-on .ftools{display:flex}
   fc.on('text:editing:exited',function(o){
     if(o.target&&!o.target.text)fc.remove(o.target);   /* 빈 텍스트는 정리 */
     editingText=false;apply();});
+  /* 사각형·직선: 드래그로 그리기 */
+  var shape=null,shapeStart=null;
+  fc.on('mouse:down',function(o){
+    if(placingText||editingText||(mode!=='rect'&&mode!=='line'))return;
+    var p=fc.getPointer(o.e);shapeStart=p;
+    if(mode==='rect')shape=new fabric.Rect({left:p.x,top:p.y,width:1,height:1,fill:'transparent',stroke:color,strokeWidth:3,strokeUniform:true});
+    else shape=new fabric.Line([p.x,p.y,p.x,p.y],{stroke:color,strokeWidth:3.5,strokeLineCap:'round'});
+    fc.add(shape);});
+  fc.on('mouse:move',function(o){if(!shape)return;var p=fc.getPointer(o.e);
+    if(mode==='rect')shape.set({left:Math.min(p.x,shapeStart.x),top:Math.min(p.y,shapeStart.y),width:Math.abs(p.x-shapeStart.x),height:Math.abs(p.y-shapeStart.y)});
+    else shape.set({x2:p.x,y2:p.y});
+    fc.renderAll();});
+  fc.on('mouse:up',function(){if(shape){shape.setCoords();shape=null;shapeStart=null;}});
 
   show((parseInt((location.hash||'').slice(1),10)||1)-1);
 })();
