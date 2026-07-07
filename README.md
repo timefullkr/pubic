@@ -1,6 +1,22 @@
 # 제주교육 AI · 공개 참고 문서
 
-미래학력분과 관련 자료 중 외부 공개용 참고 문서입니다. 아래 링크로 각 문서를 열람할 수 있습니다.
+미래학력분과 관련 자료 중 외부 공개용 참고 문서입니다.
 
-- [AI 교육 패러다임](AI교육-패러다임.md) — AI 교육을 '무엇을'이 아니라 '어떻게'로 보는 관점: 접근 보장(토대)과 활용 역량(핵심), 평가·교사 역할의 전환.
-- [AX 전환 요약](AX전환-요약.md) — 'AX 전환'(AI Transformation / Agent Experience)의 개념과 교육 현장 적용 시사점 요약.
+## 웹으로 보기 (GitHub Pages)
+
+Pages 활성화 후 아래 주소에서 열람할 수 있습니다.
+
+- 목록: `https://timefullkr.github.io/pubic/`
+- 벤저민 블룸 · 2 시그마 문제: `https://timefullkr.github.io/pubic/bloom-2sigma.html`
+- AI 교육 패러다임: `https://timefullkr.github.io/pubic/paradigm.html`
+- AX 전환 요약: `https://timefullkr.github.io/pubic/ax-transformation.html`
+
+## 원문 마크다운
+
+- [벤저민 블룸 · 2 시그마 문제](초개별화%20맞춤형%20교육의%20근거%20-벤자민%20블룸-2시그마-문제-논문-요약.md)
+- [AI 교육 패러다임](AI교육-패러다임.md)
+- [AX 전환 요약](AX전환-요약.md)
+
+---
+
+*HTML 페이지는 원문 마크다운에서 자동 생성되며, `.nojekyll`로 정적 서빙합니다.*
