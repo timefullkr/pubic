@@ -9,7 +9,8 @@
 <style>
 :root{
   --navy:#0f2a44; --navy2:#173b5c; --accent:#1fc7b1; --accent2:#7ee0d3; --accent-ink:#0b7265;
-  --amber:#f4a23b; --amber-ink:#b26305; --ink:#182634; --muted:#66768a; --light:#f4f7fa; --line:#e4e9ef; --steel:#93a9c2;
+  --amber:#f4a23b; --amber-ink:#b26305; --ink:#182634; --muted:#93a8be; --light:#f4f7fa; --line:#e4e9ef; --steel:#93a9c2;
+  --ink-d:#e9eff6; --body-d:#c3d2e2; --surface-d:#14283e; --card-d:#1d3550;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
@@ -24,10 +25,11 @@ body{
 .slide:not(.content)::after{content:"";flex:3 0 0}
 .slide.active{display:flex;animation:in .5s cubic-bezier(.2,.7,.2,1)}
 @keyframes in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-.slide.light{background:#fff;color:var(--ink)}
-.slide.navy{background:radial-gradient(130% 120% at 82% 8%, #1b4a74 0%, var(--navy) 52%, #0a1e33 100%);color:#fff}
-.slide.soft{background:linear-gradient(180deg,#fff 0%,var(--light) 100%);color:var(--ink)}
-.slide.sec{background:linear-gradient(135deg,var(--navy2) 0%,#0a1e33 100%);color:#fff}
+/* 전면 다크 — 명암 반전 없이 명도 단계·색온도·빛의 방향으로 리듬을 만든다 */
+.slide.light{background:radial-gradient(60% 40% at 50% 0%,rgba(255,255,255,.03),transparent),var(--surface-d);color:var(--body-d)}
+.slide.navy{background:radial-gradient(130% 120% at 82% 8%, #1e4d78 0%, var(--navy) 55%, #081827 100%);color:#fff}
+.slide.soft{background:linear-gradient(165deg,#0e3134 0%,#0d2337 75%);color:var(--body-d)}
+.slide.sec{background:linear-gradient(90deg,var(--accent),rgba(31,199,177,0)) left bottom/100% 4px no-repeat,linear-gradient(135deg,#0a1f33 0%,#050f1a 100%);color:#fff}
 
 /* 콘텐츠 슬라이드: 헤더 존 고정(제목 축이 슬라이드마다 출렁이지 않도록) */
 .slide.content{justify-content:flex-start;padding-top:9vh;padding-bottom:7vh}
@@ -39,20 +41,20 @@ body{
 .kicker{font-size:clamp(.8rem,1.35vw,1.05rem);font-weight:700;letter-spacing:.05em;color:var(--accent2);
   margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
 .kicker::before{content:"";width:26px;height:3px;background:var(--accent);border-radius:2px;flex:none}
-.light .kicker,.soft .kicker{color:var(--accent-ink)}
-.light .kicker::before,.soft .kicker::before{background:var(--accent-ink)}
+.light .kicker,.soft .kicker{color:var(--accent2)}
+.light .kicker::before,.soft .kicker::before{background:var(--accent)}
 
 h1.t{font-size:clamp(2.3rem,5.2vw,4rem);font-weight:800;line-height:1.16;letter-spacing:-.02em}
 .sub{font-size:clamp(1.2rem,2.4vw,1.9rem);font-weight:600;margin-top:1.1rem;color:var(--accent2)}
 .hook{font-size:clamp(1.05rem,1.9vw,1.45rem);color:#e8f2fa;margin-top:2.2rem;font-weight:600}
 .tag{font-size:clamp(.9rem,1.4vw,1.1rem);color:#c7d5e2;margin-top:.8rem;font-weight:500}
 
-.slide h2{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:800;line-height:1.22;letter-spacing:-.01em;color:var(--navy)}
+.slide h2{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:800;line-height:1.22;letter-spacing:-.01em;color:var(--ink-d)}
 .slide.navy h2,.slide.sec h2{color:#fff}
 .rule{width:60px;height:5px;background:var(--accent);border-radius:3px;margin:1rem 0 0}
 
 /* 섹션 구분 */
-.gnum{position:absolute;right:-4vw;bottom:-8vh;font-size:clamp(18rem,42vw,36rem);font-weight:800;color:rgba(126,224,211,.06);line-height:.8;pointer-events:none;user-select:none;letter-spacing:-.05em}
+.gnum{position:absolute;right:-4vw;bottom:-8vh;font-size:clamp(18rem,42vw,36rem);font-weight:800;color:rgba(31,199,177,.07);line-height:.8;pointer-events:none;user-select:none;letter-spacing:-.05em}
 .sectrack{position:absolute;top:6vh;left:8vw;display:flex;gap:1.6rem;font-size:clamp(.85rem,1.3vw,1.05rem);font-weight:700;color:rgba(255,255,255,.35)}
 .sectrack .on{color:var(--accent2)}
 .secnum{font-size:clamp(4rem,11vw,8.5rem);font-weight:800;color:var(--accent);line-height:.9;letter-spacing:-.03em}
@@ -69,38 +71,38 @@ ul.b{list-style:none;display:flex;flex-direction:column;gap:clamp(.7rem,1.6vh,1.
 ul.b li{position:relative;padding-left:2rem;font-size:clamp(1.02rem,1.75vw,1.4rem);line-height:1.55;font-weight:500}
 ul.b li::before{content:"";position:absolute;left:0;top:.55em;width:11px;height:11px;border-radius:3px;background:var(--accent);transform:rotate(45deg)}
 .navy ul.b li::before{background:var(--accent2)}
-ul.b li b{font-weight:700;color:var(--navy)}
+ul.b li b{font-weight:700;color:var(--ink-d)}
 .navy ul.b li b{color:#fff}
 ul.b li .s{display:block;font-size:.82em;color:var(--muted);font-weight:500;margin-top:.2rem}
 ul.b li .s::before{content:"— "}
 
 .cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1rem,2.2vw,1.8rem)}
-.card{background:var(--light);border:1px solid var(--line);border-radius:18px;padding:clamp(1.1rem,2.2vw,1.7rem);box-shadow:0 10px 30px rgba(15,42,68,.06)}
-.card.warn{border-top:3px solid var(--amber)}
-.card h3{font-size:clamp(1.02rem,1.8vw,1.35rem);color:var(--navy);font-weight:800;margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
+.card{background:var(--card-d);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:clamp(1.1rem,2.2vw,1.7rem);box-shadow:0 14px 34px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06)}
+.card.warn{border-top:3px solid var(--amber);background:linear-gradient(180deg,rgba(244,162,59,.07),rgba(244,162,59,0) 45%),var(--card-d)}
+.card h3{font-size:clamp(1.02rem,1.8vw,1.35rem);color:var(--ink-d);font-weight:800;margin-bottom:.9rem;display:flex;align-items:center;gap:.6rem}
 .card ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
 .card li{position:relative;padding-left:1.4rem;font-size:clamp(.95rem,1.45vw,1.18rem);line-height:1.5;font-weight:500}
-.card li::before{content:"·";position:absolute;left:.3rem;color:var(--accent-ink);font-weight:800;font-size:1.3em;top:-.15em}
+.card li::before{content:"·";position:absolute;left:.3rem;color:#4dd4c0;font-weight:800;font-size:1.3em;top:-.15em}
 .card p{font-size:clamp(.95rem,1.45vw,1.18rem);line-height:1.55;font-weight:500}
-.card p b{font-weight:700;color:var(--navy)}
-.ic{width:1.5em;height:1.5em;stroke:var(--accent-ink);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.ic.warn{stroke:var(--amber-ink)}
+.card p b{font-weight:700;color:var(--ink-d)}
+.ic{width:1.5em;height:1.5em;stroke:#4dd4c0;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ic.warn{stroke:#f4b45e}
 
 /* 근거 빅넘버 행 */
-.ev{display:grid;grid-template-columns:minmax(150px,.3fr) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(.8rem,2vh,1.3rem) 0;border-top:1px solid var(--line)}
+.ev{display:grid;grid-template-columns:minmax(150px,.3fr) 1fr;gap:clamp(1rem,2.5vw,2rem);align-items:center;padding:clamp(.8rem,2vh,1.3rem) 0;border-top:1px solid rgba(255,255,255,.12)}
 .ev:first-of-type{border-top:0}
-.evnum{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;line-height:1}
+.evnum{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:800;color:var(--ink-d);letter-spacing:-.02em;line-height:1}
 .evnum em{font-style:normal;font-size:.5em;font-weight:700;color:var(--muted)}
 .evtxt{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.55;font-weight:500}
-.evtxt b{font-weight:700;color:var(--navy)}
+.evtxt b{font-weight:700;color:var(--ink-d)}
 .evtxt .s{display:block;font-size:.82em;color:var(--muted);margin-top:.25rem}
 .evtxt .s::before{content:"— "}
 
 .note{margin-top:1.2rem;font-size:clamp(.98rem,1.55vw,1.25rem);color:var(--muted);font-weight:500}
-.note b{color:var(--navy);font-weight:700}
+.note b{color:var(--ink-d);font-weight:700}
 
 .quotemark{font-size:clamp(4rem,10vw,8rem);color:var(--accent);line-height:.6;font-weight:800;margin-bottom:.3rem}
-.quote{font-size:clamp(1.5rem,3.1vw,2.5rem);font-weight:700;line-height:1.45;color:var(--navy);max-width:24ch}
+.quote{font-size:clamp(1.5rem,3.1vw,2.5rem);font-weight:700;line-height:1.45;color:var(--ink-d);max-width:24ch}
 .attrib{margin-top:1.6rem;font-size:clamp(1rem,1.6vw,1.25rem);color:var(--muted);font-weight:600}
 
 .closing{font-size:clamp(2rem,4.4vw,3.5rem);font-weight:800;line-height:1.28;letter-spacing:-.01em}
@@ -122,10 +124,10 @@ ul.b li .s::before{content:"— "}
 /* 참고문헌 */
 .refs{list-style:none;display:flex;flex-direction:column;gap:.55rem;max-width:78ch;counter-reset:ref}
 .refs li{position:relative;padding-left:1.8rem;font-size:clamp(.82rem,1.3vw,1.02rem);line-height:1.55;color:var(--muted);counter-increment:ref}
-.refs li::before{content:counter(ref);position:absolute;left:0;top:.1em;width:1.25em;height:1.25em;border-radius:50%;background:var(--light);border:1px solid var(--line);color:var(--navy);font-size:.85em;font-weight:700;display:flex;align-items:center;justify-content:center}
+.refs li::before{content:counter(ref);position:absolute;left:0;top:.1em;width:1.25em;height:1.25em;border-radius:50%;background:var(--card-d);border:1px solid rgba(255,255,255,.12);color:var(--ink-d);font-size:.85em;font-weight:700;display:flex;align-items:center;justify-content:center}
 .refs li i{font-style:italic}
-.cite{margin-top:1.4rem;padding:.9rem 1.2rem;background:var(--light);border-left:4px solid var(--accent);border-radius:6px;font-size:clamp(.88rem,1.35vw,1.08rem);line-height:1.6;color:var(--ink);max-width:78ch}
-.cite b{color:var(--navy)}
+.cite{margin-top:1.4rem;padding:.9rem 1.2rem;background:var(--card-d);border-left:4px solid var(--accent);border-radius:6px;font-size:clamp(.88rem,1.35vw,1.08rem);line-height:1.6;color:var(--body-d);max-width:78ch}
+.cite b{color:var(--ink-d)}
 .srcline{margin-top:1.2rem;font-size:clamp(.78rem,1.2vw,.95rem);color:var(--muted)}
 
 .wm{position:absolute;right:5vw;bottom:1vh;font-size:clamp(12rem,32vw,28rem);font-weight:800;color:rgba(255,255,255,.05);line-height:.8;pointer-events:none;user-select:none;letter-spacing:-.05em}
@@ -143,7 +145,7 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
 @media print{body{overflow:visible}.slide{display:flex!important;position:relative;inset:auto;height:100vh;page-break-after:always;animation:none}.progress,.foot,.counter,.hint{display:none!important}@page{size:landscape}}
 </style>
 </head>
-<body>
+<body class="on-dark">
 <div class="progress" id="progress"></div>
 <div class="deck" id="deck">
 
@@ -246,25 +248,25 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
       <div class="vizrow">
         <div class="vizwrap">
           <svg class="viz bars" viewBox="0 0 560 300" role="img" aria-label="목표 도달률: 전통 20퍼센트, 완전학습 70퍼센트, 개인교습 90퍼센트">
-            <line x1="60" y1="50" x2="530" y2="50" stroke="#e4e9ef" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <text x="56" y="54" text-anchor="end" fill="#9aa7b5" font-size="12">100%</text>
-            <line x1="60" y1="210" x2="530" y2="210" stroke="#e4e9ef" stroke-width="1.5" stroke-dasharray="4 4"/>
-            <text x="56" y="214" text-anchor="end" fill="#9aa7b5" font-size="12">20%</text>
-            <line x1="60" y1="250" x2="530" y2="250" stroke="#cfd8e0" stroke-width="2"/>
+            <line x1="60" y1="50" x2="530" y2="50" stroke="rgba(255,255,255,.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="56" y="54" text-anchor="end" fill="#7e93a9" font-size="12">100%</text>
+            <line x1="60" y1="210" x2="530" y2="210" stroke="rgba(255,255,255,.12)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <text x="56" y="214" text-anchor="end" fill="#7e93a9" font-size="12">20%</text>
+            <line x1="60" y1="250" x2="530" y2="250" stroke="rgba(255,255,255,.30)" stroke-width="2"/>
             <!-- 전통 -->
-            <path d="M110,216 q0,-6 6,-6 h78 q6,0 6,6 V250 H110 Z" fill="#c9d4de"/>
-            <text x="155" y="198" text-anchor="middle" fill="#66768a" font-size="23" font-weight="800">20%</text>
-            <text x="155" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">전통 수업</text>
+            <path d="M110,216 q0,-6 6,-6 h78 q6,0 6,6 V250 H110 Z" fill="#41597a"/>
+            <text x="155" y="198" text-anchor="middle" fill="#9fb3c8" font-size="23" font-weight="800">20%</text>
+            <text x="155" y="272" text-anchor="middle" fill="#e9eff6" font-size="16" font-weight="600">전통 수업</text>
             <!-- 완전학습 -->
-            <path d="M250,116 q0,-6 6,-6 h78 q6,0 6,6 V250 H250 Z" fill="#8fa5ba"/>
-            <text x="295" y="98" text-anchor="middle" fill="#0f2a44" font-size="23" font-weight="800">70%</text>
+            <path d="M250,116 q0,-6 6,-6 h78 q6,0 6,6 V250 H250 Z" fill="#7691ae"/>
+            <text x="295" y="98" text-anchor="middle" fill="#e9eff6" font-size="23" font-weight="800">70%</text>
             <text x="295" y="140" text-anchor="middle" fill="#0f2a44" font-size="16" font-weight="800">+1σ</text>
-            <text x="295" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">완전학습</text>
+            <text x="295" y="272" text-anchor="middle" fill="#e9eff6" font-size="16" font-weight="600">완전학습</text>
             <!-- 개인교습 -->
             <path d="M390,76 q0,-6 6,-6 h78 q6,0 6,6 V250 H390 Z" fill="#1fc7b1"/>
-            <text x="435" y="58" text-anchor="middle" fill="#0f2a44" font-size="23" font-weight="800">90%</text>
+            <text x="435" y="58" text-anchor="middle" fill="#e9eff6" font-size="23" font-weight="800">90%</text>
             <text x="435" y="100" text-anchor="middle" fill="#0f2a44" font-size="16" font-weight="800">+2σ</text>
-            <text x="435" y="272" text-anchor="middle" fill="#182634" font-size="16" font-weight="600">1:1 개인교습</text>
+            <text x="435" y="272" text-anchor="middle" fill="#e9eff6" font-size="16" font-weight="600">1:1 개인교습</text>
           </svg>
           <div class="vizcap">막대 속 σ는 동일 실험의 효과크기(전통 수업 대비, 별도 측정치)</div>
         </div>
@@ -287,17 +289,17 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
       <div class="vizrow">
         <div class="vizwrap">
           <svg class="viz slope" viewBox="0 0 420 214" role="img" aria-label="적성과 성취의 상관계수가 전통 0.60에서 완전학습 0.35, 개인교습 0.25로 하락">
-            <line x1="40" y1="170" x2="390" y2="170" stroke="#cfd8e0" stroke-width="1.5"/>
-            <polyline points="70,50 210,100 350,120" fill="none" stroke="#3d6a94" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="70" cy="50" r="6" fill="#3d6a94" stroke="#fff" stroke-width="2"/>
-            <circle cx="210" cy="100" r="6" fill="#3d6a94" stroke="#fff" stroke-width="2"/>
-            <circle cx="350" cy="120" r="7" fill="#1fc7b1" stroke="#fff" stroke-width="2"/>
-            <text x="70" y="34" text-anchor="middle" fill="#0f2a44" font-size="19" font-weight="800">+.60</text>
-            <text x="210" y="84" text-anchor="middle" fill="#0f2a44" font-size="19" font-weight="800">+.35</text>
-            <text x="350" y="104" text-anchor="middle" fill="#0f2a44" font-size="19" font-weight="800">+.25</text>
-            <text x="70" y="192" text-anchor="middle" fill="#66768a" font-size="14">전통 수업</text>
-            <text x="210" y="192" text-anchor="middle" fill="#66768a" font-size="14">완전학습</text>
-            <text x="350" y="192" text-anchor="middle" fill="#182634" font-size="14" font-weight="700">1:1 개인교습</text>
+            <line x1="40" y1="170" x2="390" y2="170" stroke="rgba(255,255,255,.30)" stroke-width="1.5"/>
+            <polyline points="70,50 210,100 350,120" fill="none" stroke="#6f9cc6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="70" cy="50" r="6" fill="#6f9cc6" stroke="#14283e" stroke-width="2"/>
+            <circle cx="210" cy="100" r="6" fill="#6f9cc6" stroke="#14283e" stroke-width="2"/>
+            <circle cx="350" cy="120" r="7" fill="#1fc7b1" stroke="#14283e" stroke-width="2"/>
+            <text x="70" y="34" text-anchor="middle" fill="#e9eff6" font-size="19" font-weight="800">+.60</text>
+            <text x="210" y="84" text-anchor="middle" fill="#e9eff6" font-size="19" font-weight="800">+.35</text>
+            <text x="350" y="104" text-anchor="middle" fill="#e9eff6" font-size="19" font-weight="800">+.25</text>
+            <text x="70" y="192" text-anchor="middle" fill="#9fb3c8" font-size="14">전통 수업</text>
+            <text x="210" y="192" text-anchor="middle" fill="#9fb3c8" font-size="14">완전학습</text>
+            <text x="350" y="192" text-anchor="middle" fill="#e9eff6" font-size="14" font-weight="700">1:1 개인교습</text>
           </svg>
           <div class="vizcap">적성–성취 상관계수 — 타고난 적성의 영향력이 절반 이하로</div>
         </div>
@@ -357,21 +359,21 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
       </ul>
       <div class="vizwrap" style="margin-top:1.5rem">
         <svg class="viz ladder" viewBox="0 0 700 175" role="img" aria-label="효과크기 축 위의 위치: 전통 0, ITS 0.66시그마, 완전학습 1시그마, 1:1 교습 2시그마">
-          <line x1="60" y1="100" x2="640" y2="100" stroke="#cfd8e0" stroke-width="2"/>
-          <g stroke="#cfd8e0" stroke-width="1.5"><line x1="60" y1="94" x2="60" y2="106"/><line x1="350" y1="94" x2="350" y2="106"/><line x1="640" y1="94" x2="640" y2="106"/></g>
-          <circle cx="60" cy="100" r="8" fill="#c9d4de" stroke="#fff" stroke-width="2"/>
-          <circle cx="251" cy="100" r="8" fill="#3d6a94" stroke="#fff" stroke-width="2"/>
-          <circle cx="350" cy="100" r="8" fill="#8fa5ba" stroke="#fff" stroke-width="2"/>
-          <circle cx="640" cy="100" r="9" fill="#1fc7b1" stroke="#fff" stroke-width="2"/>
-          <text x="60" y="66" text-anchor="middle" fill="#66768a" font-size="15" font-weight="700">전통 수업<tspan x="60" dy="17" font-size="13" font-weight="600">0σ</tspan></text>
-          <text x="251" y="49" text-anchor="middle" fill="#0f2a44" font-size="15" font-weight="800">ITS<tspan x="251" dy="17" font-size="13" font-weight="700">+0.66σ</tspan></text>
-          <text x="350" y="66" text-anchor="middle" fill="#66768a" font-size="15" font-weight="700">완전학습<tspan x="350" dy="17" font-size="13" font-weight="600">+1σ</tspan></text>
-          <text x="640" y="49" text-anchor="middle" fill="#0f2a44" font-size="15" font-weight="800">1:1 교습<tspan x="640" dy="17" font-size="13" font-weight="700">+2σ</tspan></text>
-          <text x="60" y="132" text-anchor="middle" fill="#9aa7b5" font-size="13">백분위 50</text>
-          <text x="251" y="132" text-anchor="middle" fill="#66768a" font-size="13" font-weight="700">75</text>
-          <text x="350" y="132" text-anchor="middle" fill="#9aa7b5" font-size="13">84</text>
-          <text x="640" y="132" text-anchor="middle" fill="#66768a" font-size="13" font-weight="700">98</text>
-          <text x="60" y="158" fill="#9aa7b5" font-size="12">아래 숫자: 전통 수업 평균 학생 대비 백분위</text>
+          <line x1="60" y1="100" x2="640" y2="100" stroke="rgba(255,255,255,.30)" stroke-width="2"/>
+          <g stroke="rgba(255,255,255,.30)" stroke-width="1.5"><line x1="60" y1="94" x2="60" y2="106"/><line x1="350" y1="94" x2="350" y2="106"/><line x1="640" y1="94" x2="640" y2="106"/></g>
+          <circle cx="60" cy="100" r="8" fill="#41597a" stroke="#14283e" stroke-width="2"/>
+          <circle cx="251" cy="100" r="8" fill="#6f9cc6" stroke="#14283e" stroke-width="2"/>
+          <circle cx="350" cy="100" r="8" fill="#7691ae" stroke="#14283e" stroke-width="2"/>
+          <circle cx="640" cy="100" r="9" fill="#1fc7b1" stroke="#14283e" stroke-width="2"/>
+          <text x="60" y="66" text-anchor="middle" fill="#9fb3c8" font-size="15" font-weight="700">전통 수업<tspan x="60" dy="17" font-size="13" font-weight="600">0σ</tspan></text>
+          <text x="251" y="49" text-anchor="middle" fill="#e9eff6" font-size="15" font-weight="800">ITS<tspan x="251" dy="17" font-size="13" font-weight="700">+0.66σ</tspan></text>
+          <text x="350" y="66" text-anchor="middle" fill="#9fb3c8" font-size="15" font-weight="700">완전학습<tspan x="350" dy="17" font-size="13" font-weight="600">+1σ</tspan></text>
+          <text x="640" y="49" text-anchor="middle" fill="#e9eff6" font-size="15" font-weight="800">1:1 교습<tspan x="640" dy="17" font-size="13" font-weight="700">+2σ</tspan></text>
+          <text x="60" y="132" text-anchor="middle" fill="#7e93a9" font-size="13">백분위 50</text>
+          <text x="251" y="132" text-anchor="middle" fill="#9fb3c8" font-size="13" font-weight="700">75</text>
+          <text x="350" y="132" text-anchor="middle" fill="#7e93a9" font-size="13">84</text>
+          <text x="640" y="132" text-anchor="middle" fill="#9fb3c8" font-size="13" font-weight="700">98</text>
+          <text x="60" y="158" fill="#7e93a9" font-size="12">아래 숫자: 전통 수업 평균 학생 대비 백분위</text>
         </svg>
       </div>
     </div>
@@ -417,13 +419,13 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
           <g font-weight="700">
             <rect x="24" y="70" width="196" height="86" rx="16" fill="#fff"/>
             <text x="122" y="106" text-anchor="middle" fill="#0f2a44" font-size="20">형성평가</text>
-            <text x="122" y="132" text-anchor="middle" fill="#66768a" font-size="15">진단</text>
+            <text x="122" y="132" text-anchor="middle" fill="#9fb3c8" font-size="15">진단</text>
             <rect x="282" y="70" width="196" height="86" rx="16" fill="#fff"/>
             <text x="380" y="106" text-anchor="middle" fill="#0f2a44" font-size="20">맞춤 교정</text>
-            <text x="380" y="132" text-anchor="middle" fill="#66768a" font-size="15">설명·힌트</text>
+            <text x="380" y="132" text-anchor="middle" fill="#9fb3c8" font-size="15">설명·힌트</text>
             <rect x="540" y="70" width="196" height="86" rx="16" fill="#fff"/>
             <text x="638" y="106" text-anchor="middle" fill="#0f2a44" font-size="20">재도전</text>
-            <text x="638" y="132" text-anchor="middle" fill="#66768a" font-size="15">재출제</text>
+            <text x="638" y="132" text-anchor="middle" fill="#9fb3c8" font-size="15">재출제</text>
           </g>
           <line x1="226" y1="113" x2="276" y2="113" stroke="#7ee0d3" stroke-width="3" marker-end="url(#lp)"/>
           <line x1="484" y1="113" x2="534" y2="113" stroke="#7ee0d3" stroke-width="3" marker-end="url(#lp)"/>
@@ -555,7 +557,6 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
   var progress=document.getElementById('progress'),counter=document.getElementById('counter'),hint=document.getElementById('hint');
   var i=0,N=slides.length;
   function show(n){i=Math.max(0,Math.min(N-1,n));slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
-    document.body.classList.toggle('on-dark',slides[i].classList.contains('navy')||slides[i].classList.contains('sec'));
     progress.style.width=((i+1)/N*100)+'%';counter.textContent=(i+1)+' / '+N;history.replaceState(null,'','#'+(i+1));}
   document.addEventListener('keydown',function(e){
     if(['ArrowRight','ArrowDown',' ','PageDown'].indexOf(e.key)>-1){e.preventDefault();show(i+1);}
