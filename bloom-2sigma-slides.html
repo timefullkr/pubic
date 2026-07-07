@@ -156,15 +156,21 @@ body.on-dark .hint{color:rgba(255,255,255,.55)}
 /* 펜·텍스트 주석 레이어 (Fabric.js) */
 .canvas-container{position:fixed!important;inset:0;z-index:25;pointer-events:none}
 body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
-/* 상단 좌측 주석 툴바 */
-.ftools{position:fixed;top:2.2vh;left:2.4vw;z-index:30;display:flex;gap:.4rem;align-items:center;
+/* 우상단 주석 토글(기본 꺼짐) + 상단 좌측 툴바 */
+.anntoggle{position:fixed;top:2.2vh;right:2.4vw;z-index:30;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.22);background:rgba(13,30,48,.78);color:#8fa3b8;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;padding:0;backdrop-filter:blur(6px)}
+.anntoggle:hover{border-color:var(--accent);color:#fff}
+.anntoggle.active{border-color:var(--accent);color:var(--accent2)}
+.ftools{position:fixed;top:2.2vh;left:2.4vw;z-index:30;display:none;gap:.4rem;align-items:center;
   background:rgba(13,30,48,.78);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:.35rem .55rem;backdrop-filter:blur(6px)}
+body.tools-on .ftools{display:flex}
 .ftools button{width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:#c7d5e2;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;padding:0}
 .ftools button:hover{border-color:var(--accent);color:#fff}
 .ftools button.active{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.4);color:#fff}
 .ftools .sep{width:1px;height:20px;background:rgba(255,255,255,.18)}
 .ftools button.cswatch{border-color:transparent;width:18px;height:18px;margin:0 2px}
-@media print{.ftools,.canvas-container{display:none!important}}
+@media print{.ftools,.anntoggle,.canvas-container{display:none!important}}
 
 @media (max-width:640px){.cards,.chips{grid-template-columns:1fr}.statwrap,.vizrow{flex-direction:column;align-items:flex-start}.ev{grid-template-columns:1fr;gap:.2rem}.counter,.foot{font-size:.72rem}.sectrack{position:static;margin-bottom:2rem}}
 @media print{body{overflow:visible}.slide{display:flex!important;position:relative;inset:auto;height:100vh;page-break-after:always;animation:none}.progress,.foot,.counter,.hint{display:none!important}@page{size:landscape}}
@@ -578,6 +584,7 @@ body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
 <div class="foot">초개별화 맞춤형 교육 · 블룸 2σ</div>
 <div class="counter" id="counter">1 / 17</div>
 <canvas id="draw"></canvas>
+<button class="anntoggle" id="annToggle" title="주석 도구 켜기/끄기 (P)" aria-label="주석 도구"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>
 <div class="ftools" id="ftools">
   <button id="selBtn" title="선택·이동 — 주석을 옮기거나 크기 조절" aria-label="선택"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l16 7-7 2-2 7-7-16z"/></svg></button>
   <span class="sep"></span>
@@ -641,12 +648,18 @@ body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
     else if(mode==='select')document.getElementById('selBtn').classList.add('active');
     else if(mode==='draw'){var sw=ft.querySelector('.cswatch[data-c="'+color+'"]');if(sw)sw.classList.add('active');}
     if(!on){placingText=false;fc.discardActiveObject();fc.renderAll();}}
-  function cyclePen(){   /* P 키: 빨강→핑크→노랑→초록→해제 */
-    placingText=false;
-    if(mode!=='draw'){mode='draw';color=PEN_COLORS[0];}
-    else{var k=PEN_COLORS.indexOf(color);
-      if(k>=PEN_COLORS.length-1)mode='off';else color=PEN_COLORS[k+1];}
+  var annBtn=document.getElementById('annToggle');
+  function setTools(on){document.body.classList.toggle('tools-on',on);annBtn.classList.toggle('active',on);
+    if(on){if(mode==='off'){mode='draw';color=PEN_COLORS[0];}}else{mode='off';placingText=false;}
     apply();}
+  annBtn.addEventListener('click',function(e){e.stopPropagation();setTools(!document.body.classList.contains('tools-on'));});
+  function cyclePen(){   /* P 키: 도구 열기 → 빨강→핑크→노랑→초록 → 닫기 */
+    placingText=false;
+    if(!document.body.classList.contains('tools-on')){setTools(true);return;}
+    if(mode!=='draw'){mode='draw';color=PEN_COLORS[0];apply();return;}
+    var k=PEN_COLORS.indexOf(color);
+    if(k>=PEN_COLORS.length-1)setTools(false);
+    else{color=PEN_COLORS[k+1];apply();}}
   function resizeF(){fc.setWidth(window.innerWidth);fc.setHeight(window.innerHeight);fc.renderAll();}
   window.addEventListener('resize',resizeF);resizeF();
   window.__saveInk=function(){inkStore[i]=fc.toJSON();};
@@ -659,7 +672,7 @@ body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
     else if(b.id==='textBtn'){if(mode==='off')mode='draw';placingText=true;apply();}
     else if(b.id==='undoBtn'){var os=fc.getObjects();if(os.length){fc.remove(os[os.length-1]);fc.renderAll();}}
     else if(b.id==='clearBtn'){fc.clear();delete inkStore[i];}
-    else if(b.id==='offBtn'){mode='off';apply();}});
+    else if(b.id==='offBtn'){setTools(false);}});
   /* 텍스트: T → 위치 클릭 → 그 자리에서 입력 (기존 텍스트 클릭 시 재편집) */
   fc.on('mouse:down',function(o){
     if(!placingText)return;
