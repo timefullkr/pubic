@@ -97,6 +97,10 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 .card-actions{display:flex;gap:8px;flex-wrap:wrap}
 .card-actions a{font-size:12.5px;font-weight:600;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--fg)}
 .card-actions a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+/* 홀수 채움 카드 — 제주교육지표 이미지, 링크·호버 없음 */
+.card.filler{align-items:center;justify-content:center;padding:26px;background:#fff}
+.card.filler:hover{border-color:var(--line);box-shadow:none}
+.card.filler img{width:82%;max-width:340px;height:auto}
 @media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
 """
 
@@ -220,9 +224,13 @@ def index_body():
     groups = {}
     for d in DOCS:
         groups.setdefault(d.get("group", "기타"), []).append(d)
+    filler = ('<div class="card filler" aria-hidden="true">'
+              '<img src="img/제주교육지표-세로.png" alt="" loading="lazy"></div>')
     sections = []
     for gname, gdocs in groups.items():
         cards = "\n".join(card(d) for d in gdocs)
+        if len(gdocs) % 2 == 1:   # 2열 그리드 홀수 보정 — 마지막 칸을 교육지표 이미지로 채움
+            cards += "\n" + filler
         sections.append(f'<h2>{gname}</h2>\n<div class="cards">\n{cards}\n</div>')
     return (f'<h1 align="center">{SITE["heading"]}</h1>\n'
             f'<p class="lead-sub">{SITE["subtitle"]}</p>\n'

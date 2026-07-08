@@ -66,6 +66,10 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 .card-actions{display:flex;gap:8px;flex-wrap:wrap}
 .card-actions a{font-size:12.5px;font-weight:600;padding:3px 10px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--fg)}
 .card-actions a:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+/* 홀수 채움 카드 — 제주교육지표 이미지, 링크·호버 없음 */
+.card.filler{align-items:center;justify-content:center;padding:26px;background:#fff}
+.card.filler:hover{border-color:var(--line);box-shadow:none}
+.card.filler img{width:82%;max-width:340px;height:auto}
 @media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
 @keyframes cardfade2{0%{opacity:0}8.000%{opacity:1}50.000%{opacity:1}58.000%{opacity:0}100%{opacity:0}}
 .card-thumb.thumbs-2 img{animation:cardfade2 10s linear infinite}
