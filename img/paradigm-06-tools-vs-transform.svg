@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 372" font-family="'Pretendard','Malgun Gothic','Segoe UI',sans-serif">
+  <rect width="632" height="372" fill="#14283e"/>
+  <!-- 슬라이드 6 '조작법은 낡는다 — 활용하는 힘은 남는다' 대비 패널 -->
+  <text x="316" y="72" text-anchor="middle" fill="#9fb3c8" font-size="17" font-weight="600">조작법은 낡는다 — 활용하는 힘은 남는다</text>
+  <rect x="48" y="108" width="248" height="168" rx="16" fill="rgba(244,162,59,.08)" stroke="#f4a23b" stroke-opacity=".55" stroke-width="1.5"/>
+  <text x="172" y="152" text-anchor="middle" fill="#f4c98a" font-size="21" font-weight="800">도구 조작 교육</text>
+  <text x="172" y="188" text-anchor="middle" fill="#c7d5e2" font-size="14">특정 도구의 조작법에 머문다</text>
+  <text x="172" y="212" text-anchor="middle" fill="#c7d5e2" font-size="14">도구가 바뀌는 순간 낡는다</text>
+  <text x="172" y="252" text-anchor="middle" fill="#f4a23b" font-size="22" font-weight="800">✕</text>
+  <path d="M304 192h24" stroke="#7ee0d3" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M322 185l8 7-8 7" fill="none" stroke="#7ee0d3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="336" y="108" width="248" height="168" rx="16" fill="rgba(31,199,177,.10)" stroke="#1fc7b1" stroke-opacity=".65" stroke-width="1.5"/>
+  <text x="460" y="152" text-anchor="middle" fill="#7ee0d3" font-size="21" font-weight="800">활용·전환 교육</text>
+  <text x="460" y="188" text-anchor="middle" fill="#c7d5e2" font-size="14">교수·학습 자체를 바꾸는 힘</text>
+  <text x="460" y="212" text-anchor="middle" fill="#c7d5e2" font-size="14">모델이 바뀌어도 남는다</text>
+  <text x="460" y="252" text-anchor="middle" fill="#1fc7b1" font-size="22" font-weight="800">○</text>
+</svg>

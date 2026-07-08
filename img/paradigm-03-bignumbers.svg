@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 632 372" font-family="'Pretendard','Malgun Gothic','Segoe UI',sans-serif">
+  <rect width="632" height="372" fill="#14283e"/>
+  <!-- 슬라이드 3 '학생에겐 일상, 학교에는 숙제' 빅넘버 3종 (Pew 2025 · Stanford HAI AI Index 2025) -->
+  <text x="316" y="80" text-anchor="middle" fill="#9fb3c8" font-size="17" font-weight="600">학생에겐 일상, 학교에는 숙제</text>
+  <line x1="211" y1="140" x2="211" y2="250" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+  <line x1="421" y1="140" x2="421" y2="250" stroke="rgba(255,255,255,.14)" stroke-width="1.5"/>
+  <text x="105" y="195" text-anchor="middle" fill="#1fc7b1" font-size="52" font-weight="800">2배</text>
+  <text x="105" y="232" text-anchor="middle" fill="#c7d5e2" font-size="14" font-weight="600">청소년 학업용 ChatGPT</text>
+  <text x="105" y="254" text-anchor="middle" fill="#9fb3c8" font-size="13">13% → 26% (1년)</text>
+  <text x="316" y="195" text-anchor="middle" fill="#e9eff6" font-size="44" font-weight="800">5명 중 4</text>
+  <text x="316" y="232" text-anchor="middle" fill="#c7d5e2" font-size="14" font-weight="600">생성형 AI 쓰는 대학생</text>
+  <text x="316" y="254" text-anchor="middle" fill="#9fb3c8" font-size="13">학습 활용 약 80%</text>
+  <text x="527" y="195" text-anchor="middle" fill="#f4a23b" font-size="52" font-weight="800">6%</text>
+  <text x="527" y="232" text-anchor="middle" fill="#c7d5e2" font-size="14" font-weight="600">지침이 명확한 교사</text>
+  <text x="527" y="254" text-anchor="middle" fill="#9fb3c8" font-size="13">준비는 뒤처져 있다</text>
+</svg>
