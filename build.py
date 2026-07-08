@@ -231,10 +231,12 @@ def index_body():
         cards = "\n".join(card(d) for d in gdocs)
         if len(gdocs) % 2 == 1:   # 2열 그리드 홀수 보정 — 마지막 칸을 교육지표 이미지로 채움
             cards += "\n" + filler
-        sections.append(f'<h2>{gname}</h2>\n<div class="cards">\n{cards}\n</div>')
+        heading = f"<h2>{gname}</h2>\n" if len(groups) > 1 else ""   # 분과가 여럿일 때만 구분 제목
+        sections.append(f'{heading}<div class="cards">\n{cards}\n</div>')
+    intro = f'<p>{SITE["intro"]}</p>\n' if SITE.get("intro") else ""
     return (f'<h1 align="center">{SITE["heading"]}</h1>\n'
             f'<p class="lead-sub">{SITE["subtitle"]}</p>\n'
-            f'<p>{SITE["intro"]}</p>\n'
+            f'{intro}'
             + "\n".join(sections))
 
 
