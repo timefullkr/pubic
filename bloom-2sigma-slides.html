@@ -170,8 +170,9 @@ body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
 /* 좌상단 홈 버튼 */
 .homebtn{position:fixed;top:2.2vh;left:2.4vw;z-index:30;width:38px;height:38px;border-radius:50%;
   border:1px solid rgba(255,255,255,.22);background:rgba(13,30,48,.78);color:#8fa3b8;
-  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
-.homebtn:hover{border-color:var(--accent);color:#fff;text-decoration:none}
+  display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);
+  opacity:.28;transition:opacity .25s ease}
+.homebtn:hover{border-color:var(--accent);color:#fff;text-decoration:none;opacity:1}
 @media print{.homebtn{display:none!important}}
 
 /* 좌·우 중앙 이전/다음 버튼 */
@@ -187,9 +188,10 @@ body.pen-on .canvas-container{pointer-events:auto;touch-action:none}
 /* 우상단 주석 토글(기본 꺼짐) + 상단 좌측 툴바 */
 .anntoggle{position:fixed;top:2.2vh;right:2.4vw;z-index:30;width:38px;height:38px;border-radius:50%;
   border:1px solid rgba(255,255,255,.22);background:rgba(13,30,48,.78);color:#8fa3b8;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;padding:0;backdrop-filter:blur(6px)}
-.anntoggle:hover{border-color:var(--accent);color:#fff}
-.anntoggle.active{border-color:var(--accent);color:var(--accent2)}
+  display:flex;align-items:center;justify-content:center;padding:0;backdrop-filter:blur(6px);
+  opacity:.28;transition:opacity .25s ease}
+.anntoggle:hover{border-color:var(--accent);color:#fff;opacity:1}
+.anntoggle.active{border-color:var(--accent);color:var(--accent2);opacity:1}
 .ftools{position:fixed;top:2.2vh;right:calc(2.4vw + 50px);z-index:30;display:none;gap:.4rem;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:calc(96vw - 110px);
   background:rgba(13,30,48,.88);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:.4rem .6rem;backdrop-filter:blur(6px)}
 body.tools-on .ftools{display:flex}
