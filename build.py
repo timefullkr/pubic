@@ -122,7 +122,7 @@ TEMPLATE = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<link rel="icon" href="logo-jje.jpg">
+{og}<link rel="icon" href="logo-jje.jpg">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>{css}</style>
 </head>
@@ -137,6 +137,21 @@ TEMPLATE = """<!doctype html>
 """
 
 md = markdown.Markdown(extensions=["tables", "fenced_code", "sane_lists", "attr_list"])
+
+
+def og_meta(title, slug):
+    """SNS 공유(Open Graph·트위터 카드) 메타태그 — 교육지표 배너 + 안내 문구"""
+    import html as _html
+    base = SITE["base_url"]
+    title = _html.escape(title, quote=True)   # 제목 속 따옴표가 속성을 깨지 않게
+    return (f'<meta property="og:type" content="website">\n'
+            f'<meta property="og:title" content="{title}">\n'
+            f'<meta property="og:description" content="{SITE["og_description"]}">\n'
+            f'<meta property="og:image" content="{base}{SITE["og_image"]}">\n'
+            f'<meta property="og:image:width" content="1200">\n'
+            f'<meta property="og:image:height" content="630">\n'
+            f'<meta property="og:url" content="{base}{slug}">\n'
+            f'<meta name="twitter:card" content="summary_large_image">\n')
 
 
 def convert(md_name):
@@ -247,12 +262,15 @@ def main():
             links.append(f'<a class="pdflink" href="{d["pdf"]}">⬇ PDF로 저장·인쇄</a>')
         if links:
             body = " ".join(links) + "\n" + body
-        (ROOT / d["slug"]).write_text(TEMPLATE.format(title=d["title"], css=CSS, body=body), encoding="utf-8")
+        (ROOT / d["slug"]).write_text(
+            TEMPLATE.format(title=d["title"], css=CSS, body=body, og=og_meta(d["title"], d["slug"])),
+            encoding="utf-8")
         print("wrote", d["slug"])
         if d.get("pdf"):
             make_pdf(d["slug"], d["pdf"])
 
-    index_html = TEMPLATE.format(title=SITE["title"], css=CSS, body=index_body())
+    index_html = TEMPLATE.format(title=SITE["title"], css=CSS, body=index_body(),
+                                 og=og_meta(SITE["title"], ""))
     (ROOT / "index.html").write_text(index_html, encoding="utf-8")
     print("wrote index.html")
     print("빌드·검증 완료.")
