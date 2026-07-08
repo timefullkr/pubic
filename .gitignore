@@ -2,8 +2,7 @@ __pycache__/
 *.pyc
 _dump.txt
 
-# 내부용 자료 — 공개 저장소에 올리지 않음
-*.pptx
+# 내부용 자료 — 공개 저장소에 올리지 않음 (pptx 는 공개 전환됨)
 *.hwp
 *.hwpx
 *.docx
