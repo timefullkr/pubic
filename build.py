@@ -105,16 +105,29 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 @media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
 """
 
-# 복수 썸네일 크로스페이드 키프레임 — docs.json 에 등장하는 장수(N)별로 생성.
-# 장당 5초 표시, 0.8초 페이드. 전체 주기 T=5N초, 이미지 i의 delay 는 card() 에서 인라인 지정.
-SLIDE_SECS, FADE_SECS = 5.0, 0.8
-for _n in sorted({len(_d["thumb"]) for _d in DOCS
-                  if isinstance(_d.get("thumb"), list) and len(_d["thumb"]) > 1}):
-    _t = SLIDE_SECS * _n
-    _p1, _p2, _p3 = (FADE_SECS / _t * 100), (SLIDE_SECS / _t * 100), ((SLIDE_SECS + FADE_SECS) / _t * 100)
-    CSS += (f"@keyframes cardfade{_n}{{0%{{opacity:0}}{_p1:.3f}%{{opacity:1}}"
-            f"{_p2:.3f}%{{opacity:1}}{_p3:.3f}%{{opacity:0}}100%{{opacity:0}}}}\n"
-            f".card-thumb.thumbs-{_n} img{{animation:cardfade{_n} {_t:g}s linear infinite}}\n")
+# 복수 썸네일 크로스페이드 — 카드마다 장당 3~8초 랜덤 주기·랜덤 위상(동시 전환 방지).
+# 슬러그 해시 시드라 빌드를 반복해도 값이 고정돼 diff 가 흔들리지 않는다. delay 는 card() 에서 인라인 지정.
+FADE_SECS = 0.8
+
+
+def _rand01(key):
+    """0~1 고정 난수 — 슬러그 기반 시드"""
+    import hashlib
+    return int(hashlib.md5(key.encode("utf-8")).hexdigest()[:8], 16) / 0xFFFFFFFF
+
+
+for _d in DOCS:
+    _th = _d.get("thumb")
+    if isinstance(_th, list) and len(_th) > 1:
+        _sid = _d["slug"].rsplit(".", 1)[0]
+        _secs = round(3 + _rand01(_sid) * 5, 1)          # 장당 표시 3~8초
+        _t = _secs * len(_th)
+        _d["_anim"] = {"cls": _sid, "secs": _secs,
+                       "offset": round(_rand01(_sid + "@") * _secs, 1)}   # 시작 위상도 랜덤
+        _p1, _p2, _p3 = (FADE_SECS / _t * 100), (_secs / _t * 100), ((_secs + FADE_SECS) / _t * 100)
+        CSS += (f"@keyframes cardfade-{_sid}{{0%{{opacity:0}}{_p1:.3f}%{{opacity:1}}"
+                f"{_p2:.3f}%{{opacity:1}}{_p3:.3f}%{{opacity:0}}100%{{opacity:0}}}}\n"
+                f".card-thumb.thumbs-{_sid} img{{animation:cardfade-{_sid} {_t:g}s linear infinite}}\n")
 
 TEMPLATE = """<!doctype html>
 <html lang="ko">
@@ -214,12 +227,14 @@ def card(d):
         if len(thumbs) == 1:
             cls, imgs = "card-thumb", f'<img src="{thumbs[0]}" alt="" loading="lazy">'
         else:
-            n, t = len(thumbs), SLIDE_SECS * len(thumbs)
-            cls = f"card-thumb multi thumbs-{n}"
-            # 이미지 i 는 [5i, 5i+5) 구간에 표시 — 음수 delay 로 위상을 당겨 첫 장이 로드 즉시 보이게
+            anim = d["_anim"]
+            secs, t = anim["secs"], anim["secs"] * len(thumbs)
+            cls = f'card-thumb multi thumbs-{anim["cls"]}'
+            # 이미지 i 는 [secs*i, secs*(i+1)) 구간에 표시 — 음수 delay 로 위상을 당겨 로드 즉시 표시,
+            # offset 으로 카드마다 시작 지점을 어긋나게 해 동시 전환 방지
             imgs = "".join(
                 f'<img src="{src}" alt="" loading="lazy" '
-                f'style="animation-delay:{SLIDE_SECS * i - FADE_SECS - t:.1f}s">'
+                f'style="animation-delay:{secs * i - FADE_SECS - t - anim["offset"]:.1f}s">'
                 for i, src in enumerate(thumbs))
         # 썸네일 클릭 → 발표 슬라이드 (슬라이드가 없는 문서는 문서 페이지)
         thumb_href = d.get("slides") or d["slug"]
