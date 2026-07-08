@@ -122,7 +122,7 @@ TEMPLATE = """<!doctype html>
 <style>{css}</style>
 </head>
 <body>
-<nav class="top"><a class="home" href="index.html" title="제주도교육감직인수위원회 미래학력분과 홈"><img class="logo" src="logo-jje.jpg" alt="제주특별자치도교육청"><span>제주도교육감직인수위원회 미래학력분과</span></a></nav>
+<nav class="top"><a class="home" href="index.html" title="제주도교육감직인수위원회 홈"><img class="logo" src="logo-jje.jpg" alt="제주특별자치도교육청"><span>제주도교육감직인수위원회</span></a></nav>
 <main class="wrap">
 {body}
 </main>
@@ -216,11 +216,18 @@ def card(d):
 
 
 def index_body():
-    cards = "\n".join(card(d) for d in DOCS)
+    # 분과(group)별 섹션 — docs.json 등장 순서 유지. 다른 분과 문서는 group 만 달리해 추가하면 된다.
+    groups = {}
+    for d in DOCS:
+        groups.setdefault(d.get("group", "기타"), []).append(d)
+    sections = []
+    for gname, gdocs in groups.items():
+        cards = "\n".join(card(d) for d in gdocs)
+        sections.append(f'<h2>{gname}</h2>\n<div class="cards">\n{cards}\n</div>')
     return (f'<h1 align="center">{SITE["heading"]}</h1>\n'
             f'<p class="lead-sub">{SITE["subtitle"]}</p>\n'
             f'<p>{SITE["intro"]}</p>\n'
-            f'<div class="cards">\n{cards}\n</div>')
+            + "\n".join(sections))
 
 
 def main():
