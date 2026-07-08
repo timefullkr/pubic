@@ -19,8 +19,13 @@
       "desc": "학생은 이미 AI 시대를 사는데 학교는 아직이다 — 관건은 도구 도입 속도가 아니라 학교가 일하는 방식의 전환. 교사는 '슈퍼 교사'로, 에듀테크는 선택과 집중으로.",
       "slides": "ax-transformation-slides.html",
       "pdf": null,
-      "thumb": ["img/ax-03-pew-chatgpt-2x.svg", "img/ax-04-usage-vs-guidelines.svg"],
-      "aliases": ["AX전환-요약.md"]
+      "thumb": [
+        "img/ax-03-pew-chatgpt-2x.svg",
+        "img/ax-04-usage-vs-guidelines.svg"
+      ],
+      "aliases": [
+        "AX전환-요약.md"
+      ]
     },
     {
       "group": "미래학력분과",
@@ -52,7 +57,24 @@
         "img/bloom-10-effectsize-ladder.svg",
         "img/bloom-12-mastery-loop.svg"
       ],
-      "aliases": ["초개별화 맞춤형 교육의 근거 -벤자민 블룸-2시그마-문제-논문-요약.md"]
+      "aliases": [
+        "초개별화 맞춤형 교육의 근거 -벤자민 블룸-2시그마-문제-논문-요약.md"
+      ]
+    },
+    {
+      "group": "미래학력분과",
+      "md": "인공지능 맞춤형 교수학습 플랫폼 바당 현황 및 개선 필요사항.md",
+      "slug": "badang-status.html",
+      "title": "바당(AIEP) 현황과 개선 필요사항",
+      "desc": "11개 시·도 공동 LMS '바당'은 그릇으로서는 완성 — 그러나 학생용 생성형 AI·데이터·안전장치 층위는 비어 있다. 무엇을 공동 트랙에 요구하고, 무엇을 제주가 직접 채울 것인가.",
+      "slides": "badang-status-slides.html",
+      "pdf": null,
+      "thumb": [
+        "img/badang-05-stack.svg",
+        "img/badang-06-sso-channel.svg",
+        "img/badang-16-plug.svg"
+      ],
+      "aliases": []
     }
   ]
 }

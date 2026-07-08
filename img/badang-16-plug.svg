@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 350" role="img" aria-label="바당의 표준 연계 위에 제주 AI 계층이 결합: SSO·OneRoster 공유, LTI 실행, xAPI 기록 회송" font-family="Pretendard,'Malgun Gothic',sans-serif">
+  <rect width="560" height="350" fill="#0f2a44"/>
+  <defs>
+    <marker id="pR" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#7ee0d3"/></marker>
+    <marker id="pL" markerWidth="10" markerHeight="10" refX="0" refY="3.2" orient="auto"><path d="M7,0 L0,3.2 L7,6.4Z" fill="#f4a23b"/></marker>
+  </defs>
+  <text x="40" y="52" fill="#fff" font-size="17" font-weight="800">재구축이 아니라, 표준 콘센트에 플러그</text>
+  <g font-weight="700">
+    <rect x="40" y="96" width="150" height="180" rx="14" fill="#fff"/>
+    <text x="115" y="132" text-anchor="middle" fill="#0f2a44" font-size="18">바당</text>
+    <text x="115" y="154" text-anchor="middle" fill="#66768a" font-size="11">계정 · 명부 · LRS</text>
+    <rect x="180" y="166" width="14" height="18" rx="3" fill="#0f2a44"/>
+    <rect x="180" y="200" width="14" height="18" rx="3" fill="#0f2a44"/>
+    <rect x="180" y="234" width="14" height="18" rx="3" fill="#0f2a44"/>
+    <rect x="380" y="96" width="150" height="180" rx="14" fill="rgba(31,199,177,.14)" stroke="#1fc7b1" stroke-width="2.5"/>
+    <text x="455" y="132" text-anchor="middle" fill="#eafffb" font-size="16">제주 AI 계층</text>
+    <text x="455" y="154" text-anchor="middle" fill="#9fd8ce" font-size="11">AI 접근 · 기록 · 안전</text>
+  </g>
+  <g>
+    <line x1="194" y1="175" x2="372" y2="175" stroke="#7ee0d3" stroke-width="3" marker-end="url(#pR)"/>
+    <text x="283" y="165" text-anchor="middle" fill="#7ee0d3" font-size="11" font-weight="800">SSO · OneRoster</text>
+    <line x1="194" y1="209" x2="372" y2="209" stroke="#7ee0d3" stroke-width="3" marker-end="url(#pR)"/>
+    <text x="283" y="199" text-anchor="middle" fill="#7ee0d3" font-size="11" font-weight="800">LTI 실행</text>
+    <line x1="372" y1="243" x2="194" y2="243" stroke="#f4a23b" stroke-width="3" marker-end="url(#pL)"/>
+    <text x="283" y="264" text-anchor="middle" fill="#f4c98a" font-size="11" font-weight="800">xAPI 기록 회송</text>
+  </g>
+  <text x="280" y="312" text-anchor="middle" fill="#c7d5e2" font-size="12">코어 수정 없이 — 새 모델·기능은 어댑터 추가로</text>
+</svg>

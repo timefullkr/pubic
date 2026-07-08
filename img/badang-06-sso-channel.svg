@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 350" role="img" aria-label="바당과 에듀테크 13종 사이에 SSO 인증 채널만 가동 중이고 학습데이터 회송 채널은 미가동" font-family="Pretendard,'Malgun Gothic',sans-serif">
+  <rect width="560" height="350" fill="#14283e"/>
+  <defs>
+    <marker id="fR" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#1fc7b1"/></marker>
+    <marker id="fL" markerWidth="10" markerHeight="10" refX="0" refY="3.2" orient="auto"><path d="M7,0 L0,3.2 L7,6.4Z" fill="#6b8199"/></marker>
+  </defs>
+  <text x="40" y="52" fill="#e9eff6" font-size="17" font-weight="800">접속만 일원화 — 데이터는 쌓이지 않는다</text>
+  <g font-weight="700">
+    <rect x="40" y="110" width="140" height="96" rx="14" fill="#fff"/>
+    <text x="110" y="152" text-anchor="middle" fill="#0f2a44" font-size="18">바당</text>
+    <text x="110" y="176" text-anchor="middle" fill="#66768a" font-size="12">LMS · 대시보드</text>
+    <rect x="380" y="110" width="140" height="96" rx="14" fill="#fff"/>
+    <text x="450" y="146" text-anchor="middle" fill="#0f2a44" font-size="16">에듀테크 13종</text>
+    <text x="450" y="170" text-anchor="middle" fill="#66768a" font-size="11">교과 · 저작 · 생성형 AI</text>
+    <text x="450" y="192" text-anchor="middle" fill="#b26305" font-size="11">데이터는 벤더 귀속</text>
+  </g>
+  <g>
+    <line x1="180" y1="136" x2="372" y2="136" stroke="#1fc7b1" stroke-width="3.5" marker-end="url(#fR)"/>
+    <text x="278" y="124" text-anchor="middle" fill="#7ee0d3" font-size="13" font-weight="800">SSO 인증 — 가동 ✓</text>
+  </g>
+  <g>
+    <line x1="372" y1="182" x2="180" y2="182" stroke="#6b8199" stroke-width="3" stroke-dasharray="9 8" marker-end="url(#fL)"/>
+    <circle cx="278" cy="182" r="13" fill="#0d2337" stroke="#f4a23b" stroke-width="2"/>
+    <text x="278" y="187" text-anchor="middle" fill="#f4a23b" font-size="13" font-weight="800">✕</text>
+    <text x="278" y="216" text-anchor="middle" fill="#93a8be" font-size="13" font-weight="800">학습데이터 회송(xAPI) — 미가동</text>
+  </g>
+  <text x="280" y="292" text-anchor="middle" fill="#93a8be" font-size="12">13종 안의 학습활동이 플랫폼에 남지 않는다</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 350" role="img" aria-label="AI 교육 서비스 3층 구조: 기반 계층 LMS는 구축 완료, AI 추론 계층과 안전·데이터 거버넌스 계층은 부재" font-family="Pretendard,'Malgun Gothic',sans-serif">
+  <rect width="560" height="350" fill="#14283e"/>
+  <g>
+    <rect x="45" y="252" width="360" height="70" rx="12" fill="rgba(31,199,177,.16)" stroke="#1fc7b1" stroke-width="2.5"/>
+    <text x="65" y="282" fill="#eafffb" font-size="19" font-weight="800">기반 계층 — LMS · 표준 연계</text>
+    <text x="65" y="306" fill="#9fd8ce" font-size="12">계정 · 클래스 · 수업 · 기록 | SSO · OneRoster · LTI · xAPI</text>
+    <text x="418" y="292" fill="#1fc7b1" font-size="16" font-weight="800">✓ 완료</text>
+  </g>
+  <g>
+    <rect x="45" y="164" width="360" height="70" rx="12" fill="rgba(255,255,255,.03)" stroke="#f4a23b" stroke-width="2" stroke-dasharray="8 7"/>
+    <text x="65" y="194" fill="#f4c98a" font-size="19" font-weight="800">AI 추론 계층 — 생성형 AI</text>
+    <text x="65" y="218" fill="#c9a97e" font-size="12">대화형 AI · AI 튜터 · 수업용 AI 도구</text>
+    <text x="418" y="204" fill="#f4a23b" font-size="16" font-weight="800">✕ 부재</text>
+  </g>
+  <g>
+    <rect x="45" y="76" width="360" height="70" rx="12" fill="rgba(255,255,255,.03)" stroke="#f4a23b" stroke-width="2" stroke-dasharray="8 7"/>
+    <text x="65" y="106" fill="#f4c98a" font-size="19" font-weight="800">안전 · 데이터 거버넌스 계층</text>
+    <text x="65" y="130" fill="#c9a97e" font-size="12">안전필터 · 위기감지 · 전체 기록 · 비용 관리</text>
+    <text x="418" y="116" fill="#f4a23b" font-size="16" font-weight="800">✕ 부재</text>
+  </g>
+  <text x="45" y="46" fill="#e9eff6" font-size="17" font-weight="800">3층 구조 중, 1층만 지어졌다</text>
+</svg>
