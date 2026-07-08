@@ -286,7 +286,7 @@ def main():
             make_pdf(d["slug"], d["pdf"])
 
     index_html = TEMPLATE.format(title=SITE["title"], css=CSS, body=index_body(),
-                                 og=og_meta(SITE["title"], ""))
+                                 og=og_meta(SITE.get("og_title") or SITE["title"], ""))
     (ROOT / "index.html").write_text(index_html, encoding="utf-8")
     print("wrote index.html")
     print("빌드·검증 완료.")
