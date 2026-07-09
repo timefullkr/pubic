@@ -126,7 +126,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <li><strong>바당(BADANG) = AIEP</strong>(인공지능 맞춤형 교수학습 플랫폼): 11개 시·도 교육청 공동개발(NIA 위탁), <strong>2025.12.22 오픈</strong>.</li>
 <li><strong>구축 주관 업체(컨소시엄):</strong> NIA 발주 사업으로 <strong>KT가 우선협상대상자 선정(2024.5)·계약</strong> 후 <strong>쌍용정보통신(현 「아이티센엔텍」 — 2020년 아이티센그룹 편입·사명 변경)</strong> 등과 <strong>컨소시엄</strong>으로 구축했다. <strong>KT는 사업 총괄·AICT</strong>(xAPI·LRS·빅데이터 학습분석), <strong>아이티센엔텍은 NEIS 등 국가 교육 기간시스템 구축 경험</strong>으로 플랫폼 구축을 주도. 이 사업으로 11개 시·도에 신규 적용(기존 상용 2곳 포함 <strong>전국 17개 중 13개 교육청</strong>에 KT 플랫폼 적용). <em>(근거: KT의 NIA 'AI 맞춤형 교수학습 플랫폼' 사업 수주 보도 2024.5~6 · 아이티센엔텍 사명 변경.)</em></li>
 <li>바당은 이미 <strong>LMS</strong>다 — 클래스·수업·학생 배정 관리, 학습분석 대시보드, 빅테크(구글·네이버) 연동, 에듀테크 <strong>13종</strong> SSO 연계, 권한 계층(교사/학생/학교·교육청 관리자).</li>
-<li><strong>바당2 = 바당 위에 얹는 「AI 접근·추론 게이트웨이 계층」.</strong> 공약 <strong>「모든 학생의 AI 접근 공적 보장」</strong>을 실현하며, 바당이라는 <strong>그릇(LMS)</strong> 에 비어 있는 <strong>AI 알맹이(생성형 추론)와 그 데이터·안전 장치</strong>를 채운다.</li>
+<li><strong>바당2 = 바당 위에 얹는 「AI 접근·추론 게이트웨이 계층」.</strong> <strong>모든 학생의 AI 접근을 공적으로 보장</strong>한다는 본 사업의 원칙을 실현하며, 바당이라는 <strong>그릇(LMS)</strong> 에 비어 있는 <strong>AI 알맹이(생성형 추론)와 그 데이터·안전 장치</strong>를 채운다.</li>
 </ul>
 <div class="tablewrap"><table>
 <thead>
@@ -304,8 +304,8 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <blockquote>
 <p>근거: 「구축 현안 사항」 [붙임1] <strong>인공지능 맞춤형 교수학습 플랫폼 시스템 구성도</strong>.</p>
 </blockquote>
-<p><img alt="바당1 · 바당2 연계 구성도" src="AI교육-바당2-연계구성도.svg" /></p>
-<p><em>[그림] 바당1(AIEP·LMS) ↔ 바당2(AI 게이트웨이) 표준 연계 구성도 — 추론은 외부 벤더, 접근·인증·명부·기록은 바당 표준(SAML·OneRoster·LTI·xAPI)으로 결합.</em></p>
+<p><img alt="바당 · 바당2 연계 구성도" src="AI교육-바당2-연계구성도.svg" /></p>
+<p><em>[그림] 바당(AIEP·LMS) ↔ 바당2(AI 게이트웨이) 표준 연계 구성도 — 추론은 외부 벤더, 접근·인증·명부·기록은 바당 표준(SAML·OneRoster·LTI·xAPI)으로 결합.</em></p>
 <p>바당은 처음부터 <strong>외부 시스템을 표준 API로 끼우도록(plug-in)</strong> 설계된 개방형 플랫폼이며, 구성도에 연계 표준이 명시되어 있다.</p>
 <div class="tablewrap"><table>
 <thead>
@@ -365,7 +365,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 - <strong>독점의 대가 ① 가용성(SPOF 방어):</strong> 모든 AI 사용이 한 길목을 지나므로 게이트웨이는 <strong>단일 장애점·병목</strong>이다 → <strong>코어 HA·무중단 배포·오토스케일</strong>, <strong>외부 LLM 장애 시 폴백</strong>(타 벤더 라우팅)·<strong>degrade</strong>(읽기전용 안내)·서킷브레이커·타임아웃·재시도를 <strong>SLA로 보장</strong>(RFP 필수). "안전·로깅은 못 끄되 추론은 멈출 수 있다"는 실패 모드를 인정하고 설계한다. 폴백은 선언이 아니라 운영이다 — <strong>벤더별 기능 대응표</strong>(멀티모달·도구호출·구조화 출력)를 유지하고 폴백 시 기능 축소(degrade) 범위를 사전 정의하며, <strong>분기 1회 이상 폴백 전환 훈련</strong>을 SLA에 포함한다. 게이트웨이 코어도 기능 2와 같은 원칙으로 <strong>검증된 오픈소스 LLM 게이트웨이 기반 채택을 우선 검토</strong>한다(라우팅·폴백·비용 집계는 이미 상품화된 문제).
 - <strong>독점의 대가 ② 우회 차단:</strong> 품질이 낮으면 학생이 개인기기·무료 벤더앱으로 <strong>우회</strong>해 로깅 독점이 무너진다 → 교실 <strong>과제·평가는 바당2 경유만 인정</strong>(세션 토큰·산출물 표식) + <strong>MDM·네트워크 정책 연계</strong>. 기술만으론 100% 불가하므로 <strong>정책+기술 병행</strong>.</p>
 </blockquote>
-<h3>3-2. 바당1 ↔ 바당2 연계 구조 (표준 기반)</h3>
+<h3>3-2. 바당 ↔ 바당2 연계 구조 (표준 기반)</h3>
 <p>바당2는 §2의 바당 개방형 <strong>표준 연계 계층</strong>에 결합한다. 추론만 외부 LLM이 수행하고, 접근·인증·명부·기록은 바당의 표준으로 물린다.</p>
 <div class="tablewrap"><table>
 <thead>
@@ -524,10 +524,10 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <p><strong>개인정보 보호·비식별화</strong></p>
 <ul>
 <li>벤더 전송 전 <strong>PII 자동 마스킹·비식별화</strong> ("벤더엔 익명 토큰만"의 실제 구현) — <strong>규칙(정규식)+경량 NER 기반 온프레미스 비식별 엔진</strong>(오픈소스). <strong>암호화·재식별은 KMS/HSM·매핑 룩업</strong>으로 분리(생성형 AI 아님, GPU 불필요 — 상세 §3-5)</li>
-<li><strong>동의·법적 근거 관리</strong>: 처리 근거 이원화 — 수업·안전 등 필수 처리는 공공기관 소관업무(법 §15①3호 등, 법률 자문으로 확정), 그 외(민감정보·연구·공유 활용)는 동의 기반. <strong>만 14세 미만은 법정대리인 동의(§22-2)·14세 이상은 본인 동의</strong>로 구분 관리하고, <strong>동의 거부 학생에게도 불이익 없는 대체 학습 경로를 보장</strong>(공적 보장 공약의 전제). 보관기간 자동 만료·파기, 본인(및 법정대리인) 데이터 열람·삭제 요청</li>
+<li><strong>동의·법적 근거 관리</strong>: 처리 근거 이원화 — 수업·안전 등 필수 처리는 공공기관 소관업무(법 §15①3호 등, 법률 자문으로 확정), 그 외(민감정보·연구·공유 활용)는 동의 기반. <strong>만 14세 미만은 법정대리인 동의(§22-2)·14세 이상은 본인 동의</strong>로 구분 관리하고, <strong>동의 거부 학생에게도 불이익 없는 대체 학습 경로를 보장</strong>(AI 접근 공적 보장의 전제). 보관기간 자동 만료·파기, 본인(및 법정대리인) 데이터 열람·삭제 요청</li>
 </ul>
 <h3>기능 6 — 접근성·형평성 지원</h3>
-<p><strong>「모든 학생의 AI 접근 공적 보장」 공약의 실질.</strong></p>
+<p><strong>「모든 학생의 AI 접근 공적 보장」의 실질.</strong></p>
 <ul>
 <li>음성 입출력(TTS·STT)·자막·큰글씨 (장애학생)</li>
 <li>다국어·모국어 보조 (다문화학생), 저사양 기기·저대역 환경 대응</li>
@@ -544,7 +544,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <h3>기능 8 — 교사 수업설계·평가 지원</h3>
 <p>교사가 <strong>수업을 준비(설계)</strong> 하고 <strong>학생 결과물을 평가</strong>하는 일을 AI가 돕는, <strong>교사 전용 작업대(workbench)</strong>. 학생 대화 화면과 분리된 <em>교사 전용 작업 화면</em>이며(둘 다 기능 2 인터페이스 위에서 동작), 만든 결과물은 그대로 수업에 투입(기능 1·2)하거나 동료와 공유(기능 9)한다.</p>
 <blockquote>
-<p><strong>바당1엔 없던 'AI 에이전트'가 바당2엔 항상 대기한다:</strong> 교사가 목표만 주면 에이전트가 <strong>본 작업(수업 설계·자료·문항·채점)을 직접 수행해 결과를 만들고, 교사는 고르고 다듬어 결정</strong>한다.</p>
+<p><strong>바당엔 없던 'AI 에이전트'가 바당2엔 항상 대기한다:</strong> 교사가 목표만 주면 에이전트가 <strong>본 작업(수업 설계·자료·문항·채점)을 직접 수행해 결과를 만들고, 교사는 고르고 다듬어 결정</strong>한다.</p>
 </blockquote>
 <p><strong>① 수업 설계(준비)</strong></p>
 <div class="tablewrap"><table>
@@ -693,7 +693,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <hr />
 <h2>6. 확정 전 확인 사항</h2>
 <ul>
-<li><strong>바당1 연계:</strong> 구성도상 개방형 표준 연계(<strong>SAML · OneRoster · LTI · xAPI · API Gateway</strong>)가 이미 존재 → 바당2는 표준 도구로 결합 가능. 다만 <strong>실제 LTI/API 개방 범위·권한 부여는 NIA(운영주체)와 협의</strong>로 확정 — 특히 <strong>성적 회송 채널(LTI AGS 또는 OneRoster Gradebook) 지원 여부</strong>를 확인하고, 미지원 시 평가 결과는 xAPI 기록으로만 환류(성적부 반영은 교사 수동)하는 분기를 둔다. 연계 불가 항목은 자체 보완(최소 명부·SSO) 분기 마련.</li>
+<li><strong>바당 연계:</strong> 구성도상 개방형 표준 연계(<strong>SAML · OneRoster · LTI · xAPI · API Gateway</strong>)가 이미 존재 → 바당2는 표준 도구로 결합 가능. 다만 <strong>실제 LTI/API 개방 범위·권한 부여는 NIA(운영주체)와 협의</strong>로 확정 — 특히 <strong>성적 회송 채널(LTI AGS 또는 OneRoster Gradebook) 지원 여부</strong>를 확인하고, 미지원 시 평가 결과는 xAPI 기록으로만 환류(성적부 반영은 교사 수동)하는 분기를 둔다. 연계 불가 항목은 자체 보완(최소 명부·SSO) 분기 마련.</li>
 <li>AIEP(11시도/NIA)·교육부(KERIS) 트랙과의 <strong>역할 분담·중복</strong> 정리 — 바당2는 두 트랙이 비워둔 <strong>'학생용 생성형 AI 접근 + 전체 로깅' 계층</strong>임을 명확히. <strong>AIEP 2차 구축('26.8.~'27.2.)과 바당2 개발 기간이 겹치므로</strong>, 2차 구축으로 바당 측 연계 규격(LTI/API·LRS)이 바뀔 리스크를 전제하고 — 연계 규격 합의서에 <strong>버전 고정·변경 통지 조항</strong>을 두고 2차 구축 완료 시점에 재확인한다.</li>
 <li>멀티모달 원본 <strong>전량 보관 vs 텍스트+참조 보관</strong> 정책(용량·비용·프라이버시 균형) — 음성·영상은 미성년의 생체·초상 정보로 텍스트보다 위험 등급이 높다(<strong>프라이버시 최소화 우선</strong>).</li>
 <li>개인정보 영향평가(PIA)·보관기간·접근권한·생기부 반영 거버넌스 사전 정립(법률 자문 별도).</li>

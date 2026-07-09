@@ -20,9 +20,9 @@
   <line x1="470" y1="50" x2="300" y2="93" stroke="#555" stroke-width="1.4" marker-end="url(#arr)"/>
   <text x="350" y="68" text-anchor="middle" font-size="9.5" fill="#555">로그인(SSO)</text>
 
-  <!-- 바당1 -->
+  <!-- 바당 -->
   <rect x="30" y="93" width="480" height="278" rx="8" fill="#f5f7fc" stroke="#2c3e7a" stroke-width="2"/>
-  <text x="270" y="113" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2c3e7a">바당1 (AIEP) — 인공지능 맞춤형 교수학습 플랫폼 · LMS</text>
+  <text x="270" y="113" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2c3e7a">바당 (AIEP) — 인공지능 맞춤형 교수학습 플랫폼 · LMS</text>
   <text x="270" y="128" text-anchor="middle" font-size="9" fill="#5a6b8a">11개 시·도 공동(NIA) · 2025.12 오픈 · 기존 운영</text>
 
   <rect x="45" y="138" width="215" height="36" rx="4" fill="#fff" stroke="#c2cae0"/>
@@ -61,7 +61,7 @@
   <rect x="665" y="290" width="290" height="32" rx="4" fill="#fff" stroke="#bcdcbc"/>
   <text x="810" y="311" text-anchor="middle" font-size="10.5">데이터 · 대시보드 연계</text>
 
-  <!-- 바당1 ↔ 바당2 표준 연계 -->
+  <!-- 바당 ↔ 바당2 표준 연계 -->
   <line x1="510" y1="150" x2="648" y2="150" stroke="#2c3e7a" stroke-width="1.5" marker-end="url(#arrb)"/>
   <text x="579" y="144" text-anchor="middle" font-size="9.5" fill="#2c3e7a">SAML 2.0 SSO</text>
   <line x1="510" y1="195" x2="648" y2="195" stroke="#2c3e7a" stroke-width="1.5" marker-end="url(#arrb)"/>
@@ -74,7 +74,7 @@
   <!-- 하단 -->
   <line x1="200" y1="371" x2="200" y2="394" stroke="#555" stroke-width="1.4" marker-end="url(#arr)"/>
   <rect x="30" y="396" width="480" height="58" rx="6" fill="#f3f3f3" stroke="#999"/>
-  <text x="270" y="418" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#444">바당1 기존 외부연계 (표준 API)</text>
+  <text x="270" y="418" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#444">바당 기존 외부연계 (표준 API)</text>
   <text x="270" y="436" text-anchor="middle" font-size="9.5" fill="#444">AIDT(AI디지털교과서) · 에듀테크 13종 · 외부 LMS</text>
 
   <line x1="725" y1="371" x2="725" y2="394" stroke="#b8860b" stroke-width="1.6" marker-end="url(#arr)" marker-start="url(#arr)"/>
@@ -91,7 +91,7 @@
 
   <!-- 범례 -->
   <rect x="30" y="468" width="14" height="12" fill="#f5f7fc" stroke="#2c3e7a"/>
-  <text x="50" y="478" font-size="9" fill="#333">기존(바당1)</text>
+  <text x="50" y="478" font-size="9" fill="#333">기존(바당)</text>
   <rect x="160" y="468" width="14" height="12" fill="#eef7ee" stroke="#2e7d32"/>
   <text x="180" y="478" font-size="9" fill="#333">신규(바당2)</text>
   <text x="300" y="478" font-size="9" fill="#555">파란 화살표 = 바당 표준 연계(SAML·OneRoster·LTI·xAPI) · 추론만 외부 LLM</text>
