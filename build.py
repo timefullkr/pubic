@@ -46,10 +46,6 @@ body{margin:0;background:var(--bg);color:var(--fg);
  font-family:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;
  line-height:1.72;font-size:19px;word-break:keep-all;overflow-wrap:anywhere}
 .wrap{max-width:820px;margin:0 auto;padding:32px 22px 80px}
-nav.top{max-width:820px;margin:0 auto;padding:12px 22px;border-bottom:1px solid var(--line);font-size:14px}
-nav.top a.home{display:inline-flex;align-items:center;gap:10px;color:var(--muted);text-decoration:none}
-nav.top a.home:hover{color:var(--accent)}
-nav.top img.logo{height:36px;width:auto;display:block;background:#fff;padding:3px 6px;border-radius:6px;border:1px solid var(--line)}
 h1{font-size:1.9rem;line-height:1.35;margin:.2em 0 .5em;letter-spacing:-.01em}
 h1[align="center"]{margin:.1em 0 .15em}
 .lead-sub{color:var(--muted);font-size:1.05rem;font-weight:600;margin:-.2em 0 1.4em;text-align:center}
@@ -116,7 +112,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 30%{opacity:.15;transform:scale(.92)}
 36%,100%{opacity:1;transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.card.filler .spark{animation:none;opacity:1;transform:none}}
-@media print{nav.top,.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
+@media print{.foot,.pdflink{display:none}body{font-size:11pt;font-family:"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif}.wrap{max-width:none}}
 """
 
 # 복수 썸네일 크로스페이드 — 카드마다 장당 3~15초 랜덤 주기·랜덤 위상(동시 전환 방지).
@@ -154,7 +150,6 @@ TEMPLATE = """<!doctype html>
 <style>{css}</style>
 </head>
 <body>
-<nav class="top"><a class="home" href="index.html" title="홈"><img class="logo" src="logo-jje.jpg" alt="제주특별자치도교육청"></a></nav>
 <main class="wrap">
 {body}
 </main>
