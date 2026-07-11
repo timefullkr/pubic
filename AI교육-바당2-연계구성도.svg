@@ -68,8 +68,8 @@
   <text x="579" y="189" text-anchor="middle" font-size="9.5" fill="#2c3e7a">OneRoster 명부</text>
   <line x1="510" y1="240" x2="648" y2="240" stroke="#2c3e7a" stroke-width="1.5" marker-end="url(#arrb)"/>
   <text x="579" y="234" text-anchor="middle" font-size="9.5" fill="#2c3e7a">LTI 도구등록</text>
-  <line x1="512" y1="288" x2="648" y2="288" stroke="#2c3e7a" stroke-width="1.5" marker-start="url(#arrbs)"/>
-  <text x="579" y="282" text-anchor="middle" font-size="9.5" fill="#2c3e7a">xAPI 기록환류</text>
+  <line x1="512" y1="288" x2="648" y2="288" stroke="#8a93b8" stroke-width="1.5" stroke-dasharray="5 4" marker-start="url(#arrbs)"/>
+  <text x="579" y="282" text-anchor="middle" font-size="9" fill="#8a93b8">xAPI 환류(전면시행 옵션)</text>
 
   <!-- 하단 -->
   <line x1="200" y1="371" x2="200" y2="394" stroke="#555" stroke-width="1.4" marker-end="url(#arr)"/>
@@ -94,5 +94,5 @@
   <text x="50" y="478" font-size="9" fill="#333">기존(바당)</text>
   <rect x="160" y="468" width="14" height="12" fill="#eef7ee" stroke="#2e7d32"/>
   <text x="180" y="478" font-size="9" fill="#333">신규(바당2)</text>
-  <text x="300" y="478" font-size="9" fill="#555">파란 화살표 = 바당 표준 연계(SAML·OneRoster·LTI·xAPI) · 추론만 외부 LLM</text>
+  <text x="300" y="478" font-size="9" fill="#555">파란 화살표 = 바당 표준 연계(SAML·OneRoster·LTI) · 점선 = xAPI 환류(전면시행 옵션) · 추론만 외부 LLM</text>
 </svg>
