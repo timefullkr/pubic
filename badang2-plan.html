@@ -383,7 +383,7 @@ tr:nth-child(even) td{background:color-mix(in srgb,var(--soft) 45%,transparent)}
 <blockquote>
 <p><strong>한 줄 정리:</strong> 바당2 = 바당의 <strong>「LTI 외부 도구」</strong> — 기록·분석은 바당2에서 완결(xAPI 환류는 전면시행 옵션).</p>
 <p><strong>저장 역할 분리 (중복 구축 아님):</strong> 기록을 두 종류로 나눈다.
-- <strong>학습기록:</strong> 정본은 <strong>바당2 DB</strong> — 학습분석·대시보드·생기부 근거를 바당2가 직접 제공(표준 LRS 제품을 재구축하는 것이 아니라 운영 DB·대시보드 형태). <strong>xAPI 환류(바당 LRS 적재)는 시범 미사용 — 전면시행 옵션.</strong>
+- <strong>학습기록:</strong> 정본은 <strong>바당2 DB</strong> — 학습분석·대시보드·생기부 근거를 바당2가 직접 제공(표준 LRS 제품을 재구축하는 것이 아니라 운영 DB·대시보드 형태). <strong>xAPI 환류(바당 LRS 적재)는 시범 미사용 — 전면시행 옵션.</strong> 단, 학습활동 이벤트 스키마는 처음부터 <strong>xAPI로 사상(mapping) 가능하게 설계</strong>하고 어휘(동사·활동 타입)를 xAPI 프로파일로 정의해 둔다(RFP 요구사항) — 환류를 켜는 순간 변환기만 추가하면 되도록. <em>(저장 포맷 자체를 xAPI statement로 하라는 뜻이 아니다 — 조회·집계는 운영 DB가 맡고, xAPI는 내보내기 계층.)</em>
 - <strong>송수신 전문 원본(raw 전량):</strong> 안전·감사·개인정보용. 바당엔 <strong>원래 없던 것</strong>(§1-②)이라 바당2가 <strong>신규 확보</strong> → <strong>교육청 소유·국내 보관</strong>(§3-5). LMS 중복이 아니라 <strong>신설</strong>이다.
 - <strong>학습 상태 모델(지식 추적, 기능 3):</strong> 학생별 숙달 상태를 성취기준·스킬 단위로 <strong>갱신·보존하는 파생 모델</strong> — 바당2 DB 보유. 학습기록의 <em>요약·현재값</em>이지 기록 자체가 아니며, 갱신 근거가 된 평가·도달 이벤트는 학습기록(바당2 DB)에 적재하고 <strong>상태 모델은 그 기록으로부터 재산출 가능</strong>하게 설계한다(정본은 어디까지나 증거 = 학습기록·전문 로그).
 - 그 밖에 바당2가 쥐는 것은 <strong>실시간 운영 상태</strong>(세션·컨텍스트 · 안전 이벤트·알림 · 식별↔익명 매핑 · 토큰·비용·레이트리밋) — §3-4의 PostgreSQL·Redis.</p>
