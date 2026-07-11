@@ -6,7 +6,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>제주교육 AI 플랫폼(바당2) 개발 개요 · 발표 슬라이드</title>
+<title>제주교육AI플랫폼(바당2) 개발 개요 · 발표 슬라이드</title>
 <link rel="icon" href="logo-jje.jpg">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
@@ -220,7 +220,7 @@ body.tools-on .ftools{display:flex}
   <section class="slide navy active">
     <div class="wm">AI</div>
     <div class="kicker">제주도교육감직인수위원회</div>
-    <h1 class="t">제주교육 AI 플랫폼<br>(바당2) 개발 개요</h1>
+    <h1 class="t">제주교육AI플랫폼<br>(바당2) 개발 개요</h1>
     <div class="sub">모두가 쓰고, 누구나 확장하는 모두의 AI 플랫폼</div>
     <div class="hook">학생·교사·교직원이 수업·업무 어디에나 쓰고, 그 위에 누구나 기능을 얹어 골라 쓴다.</div>
   </section>
@@ -254,7 +254,7 @@ body.tools-on .ftools{display:flex}
         <div class="evnum">③</div>
         <div class="evtxt"><b>안전·거버넌스 장치가 없다</b> — 교육청이 직접 안전필터·로깅·통제할 수단 부재. 벤더 앱 직접 사용은 통제·기록 자체가 불가능.</div>
       </div>
-      <div class="note">바당은 LMS(그릇)로서는 완성 — 진단 전체는 전편 「바당(AIEP) 현황과 개선 방안」 참조. <b>바당2는 정확히 이 세 공백을 메운다.</b></div>
+      <div class="note">세 공백 모두 <b>교육청 공식 문서가 스스로 진술</b>한 것이다 — 외부의 주장이 아니다. 진단 전체는 전편 「바당(AIEP) 현황과 개선 방안」 참조. <b>바당2는 정확히 이 세 공백을 메운다.</b></div>
     </div>
   </section>
 
@@ -275,7 +275,7 @@ body.tools-on .ftools{display:flex}
           </ul>
         </div>
         <div class="vizwrap">
-          <svg class="viz stack" viewBox="0 0 640 360" role="img" aria-label="바당(LMS) 위에 바당2(AI 접근·추론 게이트웨이)가 SAML·OneRoster·LTI·xAPI 표준으로 결합하고, 추론은 외부 LLM API가 수행하는 구조도">
+          <svg class="viz stack" viewBox="0 0 640 360" role="img" aria-label="바당(LMS) 위에 바당2(AI 접근·추론 게이트웨이)가 SAML·OneRoster·LTI 표준으로 결합하고(xAPI 환류는 전면시행 옵션), 추론은 외부 LLM API가 수행하는 구조도">
             <defs>
               <marker id="sR" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6Z" fill="#7ee0d3"/></marker>
             </defs>
@@ -290,13 +290,14 @@ body.tools-on .ftools{display:flex}
             <!-- 표준 커넥터 4종 -->
             <g stroke="#7ee0d3" stroke-width="3">
               <line x1="90" y1="216" x2="90" y2="140"/><line x1="183" y1="216" x2="183" y2="140"/>
-              <line x1="276" y1="216" x2="276" y2="140"/><line x1="369" y1="216" x2="369" y2="140"/>
+              <line x1="276" y1="216" x2="276" y2="140"/>
             </g>
+            <line x1="369" y1="216" x2="369" y2="140" stroke="#7ee0d3" stroke-width="3" stroke-dasharray="6 5" opacity=".5"/>
             <g fill="#7ee0d3" font-size="12" font-weight="800" text-anchor="middle" stroke="#14283e" stroke-width="7" paint-order="stroke">
               <text x="90" y="184">SAML</text><text x="183" y="184">OneRoster</text><text x="276" y="184">LTI</text><text x="369" y="184">xAPI</text>
             </g>
             <g fill="#9fb3c8" font-size="10.5" font-weight="600" text-anchor="middle" stroke="#14283e" stroke-width="6" paint-order="stroke">
-              <text x="90" y="202">인증</text><text x="183" y="202">명부</text><text x="276" y="202">도구</text><text x="369" y="202">기록</text>
+              <text x="90" y="202">인증</text><text x="183" y="202">명부</text><text x="276" y="202">도구</text><text x="369" y="202">환류(옵션)</text>
             </g>
             <!-- 외부 LLM -->
             <line x1="420" y1="92" x2="472" y2="92" stroke="#7ee0d3" stroke-width="3" marker-end="url(#sR)"/>
@@ -305,7 +306,7 @@ body.tools-on .ftools{display:flex}
             <text x="548" y="87" text-anchor="middle" fill="#e9eff6" font-size="14" font-weight="800">외부 LLM API</text>
             <text x="548" y="108" text-anchor="middle" fill="#9fb3c8" font-size="11">Claude · GPT · 국산 …</text>
             <text x="548" y="152" text-anchor="middle" fill="#c7d5e2" font-size="11.5">GPU 서버 불필요</text>
-            <text x="320" y="344" text-anchor="middle" fill="#c7d5e2" font-size="13" font-weight="600">바당2 = 바당의 「LTI 외부 도구 + xAPI 기록 제공자」</text>
+            <text x="320" y="344" text-anchor="middle" fill="#c7d5e2" font-size="13" font-weight="600">바당2 = 바당의 「LTI 외부 도구」 — 기록·분석은 바당2에서 완결</text>
           </svg>
           <div class="vizcap">포크(복제)가 아니라 표준 연계 — 바당 코드는 건드리지 않는다</div>
         </div>
@@ -431,7 +432,7 @@ body.tools-on .ftools{display:flex}
     </div>
     <div class="bodyarea">
       <div class="vizwrap">
-        <svg class="viz gw" viewBox="0 0 1060 345" role="img" aria-label="학생·교사·교직원의 모든 AI 사용이 인증·모델 라우터·안전필터·PII 비식별·전량 로깅을 갖춘 코어 게이트웨이를 지나 어댑터로 연결된 외부 LLM(클로드, GPT, 국산, 교육부 특화 LLM 예정)에 닿고, 기록은 교육청 DB와 바당 LRS로 적재되는 구조도">
+        <svg class="viz gw" viewBox="0 0 1060 345" role="img" aria-label="학생·교사·교직원의 모든 AI 사용이 인증·모델 라우터·안전필터·PII 비식별·전량 로깅을 갖춘 코어 게이트웨이를 지나 어댑터로 연결된 외부 LLM(클로드, GPT, 국산, 교육부 특화 LLM 예정)에 닿고, 기록은 교육청 DB에 적재되어 학습기록·분석이 바당2에서 완결되는 구조도">
           <defs>
             <marker id="gR" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#7ee0d3"/></marker>
             <marker id="gA" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#f4a23b"/></marker>
@@ -471,7 +472,7 @@ body.tools-on .ftools{display:flex}
           </g>
           <line x1="417" y1="260" x2="417" y2="292" stroke="#f4a23b" stroke-width="3" marker-end="url(#gA)"/>
           <rect x="200" y="296" width="434" height="42" rx="10" fill="rgba(244,162,59,.14)" stroke="#f4a23b" stroke-width="1.5"/>
-          <text x="417" y="322" text-anchor="middle" fill="#f4c98a" font-size="14" font-weight="700">교육청 DB — 전문 원본 · 국내 보관 · 학습활동은 xAPI → 바당 LRS</text>
+          <text x="417" y="322" text-anchor="middle" fill="#f4c98a" font-size="13" font-weight="700">교육청 DB — 전문 원본·학습기록 국내 보관 · xAPI 환류는 전면시행 옵션</text>
           <text x="920" y="300" text-anchor="middle" fill="#c7d5e2" font-size="13" font-weight="600">추론은 외부 API —</text>
           <text x="920" y="320" text-anchor="middle" fill="#c7d5e2" font-size="13" font-weight="600">GPU 서버 불필요</text>
         </svg>
@@ -689,7 +690,7 @@ body.tools-on .ftools{display:flex}
     </div>
     <div class="bodyarea">
       <div class="vizwrap">
-        <svg class="viz mkt" viewBox="0 0 960 200" role="img" aria-label="개발자가 만든 확장이 AI 교육위원회의 계획서·콘텐츠 2단계 심사를 거쳐 마켓에 게시되고 학교가 도입하는 유통 흐름도">
+        <svg class="viz mkt" viewBox="0 0 960 200" role="img" aria-label="개발자가 만든 확장이 제주교육AI플랫폼 운영위원회의 계획서·콘텐츠 2단계 심사를 거쳐 마켓에 게시되고 학교가 도입하는 유통 흐름도">
           <defs>
             <marker id="mR" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#7ee0d3"/></marker>
             <marker id="mG" markerWidth="10" markerHeight="10" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4Z" fill="#9fb3c8"/></marker>
@@ -700,7 +701,7 @@ body.tools-on .ftools{display:flex}
             <text x="114" y="80" text-anchor="middle" fill="#0f2a44" font-size="17">개발자</text>
             <text x="114" y="104" text-anchor="middle" fill="#66768a" font-size="12">에듀테크 업체 · 교사</text>
             <rect x="266" y="46" width="188" height="82" rx="12" fill="rgba(244,162,59,.14)" stroke="#f4a23b" stroke-width="2"/>
-            <text x="360" y="74" text-anchor="middle" fill="#f4c98a" font-size="15">AI 교육위원회</text>
+            <text x="360" y="74" text-anchor="middle" fill="#f4c98a" font-size="12.5">제주교육AI플랫폼 운영위원회</text>
             <text x="360" y="95" text-anchor="middle" fill="#e9eff6" font-size="12">심사 ① 계획서 ② 콘텐츠</text>
             <rect x="516" y="46" width="180" height="82" rx="12" fill="#fff"/>
             <text x="606" y="80" text-anchor="middle" fill="#0f2a44" font-size="17">확장 마켓</text>
@@ -732,7 +733,7 @@ body.tools-on .ftools{display:flex}
     </div>
     <div class="bodyarea">
       <div class="vizwrap">
-        <svg class="viz tl" viewBox="0 0 1100 250" role="img" aria-label="2026년 7월 15일 개발TF 조직, 2026 하반기 기획·ISMP·RFP, 재원 확보 T0, T+2에서 7까지 구축, T+7에서 8까지 검수를 거쳐 2027년 9월 초·중·고 6교 시범 개통과 AI 교육위원회 출범, 이후 효과검증과 전면시행으로 이어지는 일정표">
+        <svg class="viz tl" viewBox="0 0 1100 250" role="img" aria-label="2026년 7월 15일 개발TF 조직, 기획과 ISP·ISMP를 개발TF가 자체 수행해 2026년 9월 30일까지 완료(산출 사업비는 2027 본예산 반영), 예산 성립 T0 2027년 1월 1일, T+2에서 7까지 구축, T+7에서 8까지 검수를 거쳐 2027년 9월 초·중·고 6교 시범 개통과 제주교육AI플랫폼 운영위원회 출범, 이후 효과검증과 전면시행으로 이어지는 일정표">
           <line x1="40" y1="140" x2="1060" y2="140" stroke="rgba(255,255,255,.30)" stroke-width="2.5"/>
           <g stroke="#7ee0d3" stroke-width="2">
             <line x1="95" y1="140" x2="95" y2="100"/><line x1="430" y1="140" x2="430" y2="100"/><line x1="740" y1="140" x2="740" y2="100"/><line x1="905" y1="140" x2="905" y2="88"/>
@@ -749,17 +750,17 @@ body.tools-on .ftools{display:flex}
           <circle cx="1020" cy="140" r="7" fill="#93a9c2" stroke="#14283e" stroke-width="2"/>
           <g text-anchor="middle" font-weight="700">
             <text x="95" y="76" fill="#e9eff6" font-size="15">개발TF 조직<tspan x="95" dy="17" font-size="12.5" fill="#7ee0d3">2026.7.15. 전</tspan></text>
-            <text x="260" y="204" fill="#e9eff6" font-size="15">기획 · ISMP · RFP<tspan x="260" dy="17" font-size="12.5" fill="#9fb3c8">2026 하반기 — T0 이전 수행</tspan></text>
-            <text x="430" y="76" fill="#f4c98a" font-size="15">T0 — 재원 확보<tspan x="430" dy="17" font-size="12.5" fill="#9fb3c8">이후는 T+n(상대 개월)</tspan></text>
+            <text x="260" y="204" fill="#e9eff6" font-size="15">기획+ISP·ISMP — TF 자체 수행<tspan x="260" dy="17" font-size="12.5" fill="#9fb3c8">~2026.9.30 · 사업비 → 2027 본예산</tspan></text>
+            <text x="430" y="76" fill="#f4c98a" font-size="15">T0 — 예산 성립<tspan x="430" dy="17" font-size="12.5" fill="#9fb3c8">2027.1.1 · 이후는 T+n(상대 개월)</tspan></text>
             <text x="590" y="204" fill="#e9eff6" font-size="15">구축 (MVP)<tspan x="590" dy="17" font-size="12.5" fill="#9fb3c8">T+2~7 — 사업자 선정 후</tspan></text>
             <text x="740" y="76" fill="#e9eff6" font-size="15">검수<tspan x="740" dy="17" font-size="12.5" fill="#9fb3c8">T+7~8 · 보안/PIA</tspan></text>
-            <text x="905" y="46" fill="#eafffb" font-size="17" font-weight="800">시범 개통 2027.9<tspan x="905" dy="18" font-size="12.5" fill="#7ee0d3" font-weight="700">초·중·고 각 2교(6교) · 한 학기</tspan><tspan x="905" dy="16" font-size="12.5" fill="#7ee0d3" font-weight="700">AI 교육위원회 출범</tspan></text>
+            <text x="905" y="46" fill="#eafffb" font-size="17" font-weight="800">시범 개통 2027.9<tspan x="905" dy="18" font-size="12.5" fill="#7ee0d3" font-weight="700">초·중·고 각 2교(6교) · 한 학기</tspan><tspan x="905" dy="16" font-size="12.5" fill="#7ee0d3" font-weight="700">운영위원회 출범</tspan></text>
             <text x="1020" y="204" fill="#e9eff6" font-size="15">전면시행<tspan x="1020" dy="17" font-size="12.5" fill="#9fb3c8">효과검증·심의 후</tspan></text>
           </g>
         </svg>
-        <div class="vizcap">ISMP(요구 상세화·RFP)를 T0 이전에 마쳐야 2027.9 개통이 유지된다 — 기획사 ≠ 구축사</div>
+        <div class="vizcap">사업비 산출·RFP를 9/30까지 마쳐야 2027 본예산에 실린다 — 지연 시 전체 순연 · ISMP는 개발TF 자체 수행(외부 용역 없음)</div>
       </div>
-      <div class="note">기획용 추진 계획(안) — 사업범위·일정은 <b>재원 확보(T0) · AIEP 2차 구축(’26.8.~’27.2.)과의 정합</b>을 맞춰 확정. 시범 부하 기준 2,200명.</div>
+      <div class="note">기획용 추진 계획(안) — 사업범위·일정은 <b>예산 성립(T0, 2027.1.1.) · AIEP 2차 구축(’26.8.~’27.2.)과의 정합</b>을 맞춰 확정. 시범 부하 기준 2,200명.</div>
     </div>
   </section>
 
@@ -784,19 +785,20 @@ body.tools-on .ftools{display:flex}
         <li><a href="badang-status.html">「인공지능 맞춤형 교수학습 플랫폼 바당 현황 및 개선 방안」 — 본 덱의 전편(현황 진단·공백 ①~⑭)</a>.</li>
         <li><a href="paradigm.html">「AI 교육 패러다임」 — 왜·무엇을(본 개발안은 그 실현·구현)</a>.</li>
         <li><a href="bloom-2sigma.html">「고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경」 — 블룸 2σ·숙달 루프의 이론적 뿌리</a>.</li>
+        <li>「운영 계획으로 본 바당 격차·타당성」(내부 문서) — 교육청 공식 문서 인용만으로 세운 추진 근거.</li>
         <li><a href="https://en.wikipedia.org/wiki/Ed_(chatbot)" target="_blank" rel="noopener">Ed (chatbot) — Wikipedia. LAUSD AI 비서 ‘Ed’(AllHere)의 2024.3. 출시·2024.6.14. 중단, 학생 데이터 처리 논란 정리.</a></li>
       </ol>
-      <div class="cite"><b>약어</b> — 바당2(BADANG2, 「제주교육 AI 플랫폼」) · AIEP(인공지능 맞춤형 교수학습 플랫폼=바당) · LMS(학습관리시스템) · LRS(학습기록저장소) · xAPI(학습활동 기록 표준) · LTI(외부 학습 도구 실행 표준) · OneRoster(명부 표준) · SAML(SSO 인증 표준) · MCP(AI-도구 연결 프로토콜) · PII(개인식별정보) · DPA(개인정보 처리 계약) · NER(개체명 인식) · ISMP(정보시스템 마스터플랜) · RFP(제안요청서) · T0(재원 확보 시점) · SLA(서비스 수준 협약) · MVP(최소기능제품) · PIA(개인정보 영향평가)</div>
-      <div class="srcline">원문: 「제주교육 AI 플랫폼(바당2) 개발 개요」(badang2-plan.html) · 제주도교육감직인수위원회 미래학력분과 (’26.6.13. 작성)</div>
+      <div class="cite"><b>약어</b> — 바당2(BADANG2, 「제주교육AI플랫폼」) · AIEP(인공지능 맞춤형 교수학습 플랫폼=바당) · LMS(학습관리시스템) · LRS(학습기록저장소) · xAPI(학습활동 기록 표준 — 환류는 전면시행 옵션) · LTI(외부 학습 도구 실행 표준) · OneRoster(명부 표준) · SAML(SSO 인증 표준) · MCP(AI-도구 연결 프로토콜) · PII(개인식별정보) · DPA(개인정보 처리 계약) · NER(개체명 인식) · ISMP(정보시스템 마스터플랜 — 개발TF 자체 수행) · RFP(제안요청서) · T0(예산 성립 시점, 2027.1.1.) · SLA(서비스 수준 협약) · MVP(최소기능제품) · PIA(개인정보 영향평가)</div>
+      <div class="srcline">원문: 「제주교육AI플랫폼(바당2) 개발 개요」(badang2-plan.html) · 제주도교육감직인수위원회 미래학력분과 (’26.6.13. 작성)</div>
     </div>
   </section>
 
 </div>
 
-<div class="foot">제주교육 AI 플랫폼(바당2) · 개발 개요</div>
+<div class="foot">제주교육AI플랫폼(바당2) · 개발 개요</div>
 <div class="counter" id="counter">1 / 20</div>
 <canvas id="draw"></canvas>
-<a class="homebtn" href="https://timefullkr.github.io/pubic/" title="제주교육 AI 플랫폼 홈으로" aria-label="홈"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></a>
+<a class="homebtn" href="https://timefullkr.github.io/pubic/" title="제주교육AI플랫폼 홈으로" aria-label="홈"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/></svg></a>
 <button class="anntoggle" id="annToggle" title="주석 도구 켜기/끄기 (P)" aria-label="주석 도구"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>
 <div class="ftools" id="ftools">
   <button id="selBtn" class="tbtn" title="선택 — 주석 이동·크기조절"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3l16 7-7 2-2 7-7-16z"/></svg></button>
