@@ -43,5 +43,5 @@
   <!-- 미도달 루프 (아래 회귀) -->
   <path d="M880,222 C880,296 376,296 376,224" fill="none" stroke="#2a9d8a" stroke-width="2.5" marker-end="url(#mlT)"/>
 
-  <text x="628" y="316" text-anchor="middle" fill="#2a9d8a" font-size="15" font-weight="800">미도달 루프 — 숙달할 때까지 반복</text>
+  <text x="628" y="316" text-anchor="middle" fill="#2a9d8a" font-size="15" font-weight="800">블룸의 완전학습 루프 — 미도달 시 숙달할 때까지 반복</text>
 </svg>
