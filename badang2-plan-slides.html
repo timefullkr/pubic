@@ -139,13 +139,15 @@ ul.b li .s::before{content:"— "}
 .capline{margin-top:1.2rem;font-size:clamp(1.32rem,2.178vw,1.716rem);color:#c7d5e2;font-weight:600}
 
 /* 참고문헌 */
-.refs{list-style:none;display:flex;flex-direction:column;gap:.55rem;max-width:78ch;counter-reset:ref}
-.refs li{position:relative;padding-left:1.8rem;font-size:clamp(.984rem,1.56vw,1.224rem);line-height:1.55;color:var(--muted);counter-increment:ref}
+/* 측정 폭은 글자 크기를 가진 요소에 건다 — ul 에 ch 를 걸면 16px 기준이라 칼럼이 절반으로 줄어든다 */
+.refs{list-style:none;display:flex;flex-direction:column;gap:.55rem;counter-reset:ref}
+.refs li{position:relative;padding-left:1.8rem;font-size:clamp(.984rem,1.56vw,1.224rem);line-height:1.55;color:var(--muted);counter-increment:ref;
+  max-width:72em;text-wrap:pretty}
 .refs li::before{content:counter(ref);position:absolute;left:0;top:.1em;width:1.25em;height:1.25em;border-radius:50%;background:var(--card-d);border:1px solid rgba(255,255,255,.12);color:var(--ink-d);font-size:.85em;font-weight:700;display:flex;align-items:center;justify-content:center}
 .refs li i{font-style:italic}
 .refs a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.22);text-underline-offset:3px}
 .refs a:hover{color:var(--accent2);text-decoration-color:var(--accent2)}
-.cite{margin-top:1.4rem;padding:.9rem 1.2rem;background:var(--card-d);border-left:4px solid var(--accent);border-radius:6px;font-size:clamp(1.056rem,1.62vw,1.296rem);line-height:1.6;color:var(--body-d);max-width:78ch}
+.cite{margin-top:1.4rem;padding:.9rem 1.2rem;background:var(--card-d);border-left:4px solid var(--accent);border-radius:6px;font-size:clamp(1.056rem,1.62vw,1.296rem);line-height:1.6;color:var(--body-d);max-width:68em}
 .cite b{color:var(--ink-d)}
 .srcline{margin-top:1.2rem;font-size:clamp(.936rem,1.44vw,1.14rem);color:var(--muted)}
 
