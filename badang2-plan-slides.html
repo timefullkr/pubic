@@ -66,9 +66,9 @@ h1.t{font-size:clamp(3.036rem,6.864vw,5.28rem);font-weight:800;line-height:1.16;
 
 .statwrap{display:flex;align-items:center;gap:clamp(1.5rem,4vw,3.5rem);flex-wrap:wrap}
 .statnum{font-size:clamp(5.94rem,17.16vw,13.2rem);font-weight:800;color:var(--amber);line-height:.85;letter-spacing:-.04em}
-.statcap{max-width:44ch;margin-top:1.2rem}
-.statcap .big{font-size:clamp(1.452rem,2.64vw,2.112rem);font-weight:700;line-height:1.4}
-.statcap .small{font-size:clamp(1.254rem,2.046vw,1.584rem);color:#c7d5e2;margin-top:1rem;line-height:1.55}
+.statcap{margin-top:1.2rem}
+.statcap .big{font-size:clamp(1.452rem,2.64vw,2.112rem);font-weight:700;line-height:1.4;max-width:24em;text-wrap:pretty}
+.statcap .small{font-size:clamp(1.254rem,2.046vw,1.584rem);color:#c7d5e2;margin-top:1rem;line-height:1.55;max-width:32em;text-wrap:pretty}
 
 /* 측정 폭은 li(본문 크기) 기준으로 잡는다 — ul 에 ch 를 걸면 16px 기준이라 한 줄이 21자로 쪼그라든다 */
 ul.b{list-style:none;display:flex;flex-direction:column;gap:clamp(.7rem,1.6vh,1.25rem)}
