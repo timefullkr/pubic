@@ -167,7 +167,9 @@ ul.b.icons li>.ic{position:absolute;left:0;top:.1em;width:1.55em;height:1.55em}
 @media (max-width:820px){.gloss{column-count:1}}
 /* 부록 기능 대응표 — 반분 2단·컴팩트 */
 .cmp{display:flex;gap:2.4rem;align-items:flex-start}
-.cmp table{flex:1;border-collapse:collapse;font-size:clamp(.92rem,1.32vw,1.24rem);line-height:1.5;color:var(--body-d)}
+.cmp table{flex:1;border-collapse:collapse;font-size:clamp(.92rem,1.32vw,1.24rem);line-height:1.5;color:var(--body-d);counter-reset:row}
+.cmp table:last-of-type{counter-reset:row 13}
+.cmp td:first-child::before{counter-increment:row;content:counter(row);display:inline-block;min-width:1.55em;color:var(--muted);font-size:.82em;font-variant-numeric:tabular-nums}
 .cmp th{color:var(--accent2);font-weight:800;text-align:left;padding:.16rem .45rem;border-bottom:1px solid rgba(255,255,255,.28);white-space:nowrap}
 .cmp td{padding:.15rem .45rem;border-bottom:1px solid rgba(255,255,255,.07);vertical-align:top}
 .cmp th:nth-child(2),.cmp th:nth-child(3),.cmp td:nth-child(2),.cmp td:nth-child(3){text-align:center;white-space:nowrap}
@@ -1203,29 +1205,7 @@ body.tools-on .ftools{display:flex}
     <div class="closelast">개발TF 조직 2026.7.15. — 준비는 지금 시작한다.</div>
   </section>
 
-  <!-- 34 출처 -->
-  <section class="slide light content">
-    <div class="head">
-      <div class="kicker">출처</div>
-      <h2>근거 문서</h2>
-      <div class="rule"></div>
-    </div>
-    <div class="bodyarea">
-      <ol class="refs">
-        <li>「인공지능 맞춤형 교수학습 플랫폼 구축 현안 사항」, 제주특별자치도교육청 디지털미래기획과 (’26.6.) — §1 다섯 공백·§2 시스템 구성도의 근거.</li>
-        <li>「2026 바당 운영 기본 계획(안)」 · 「AIEP 사용자 매뉴얼」 — §1 다섯 공백의 직접 진술.</li>
-        <li><a href="badang-status.html">「인공지능 맞춤형 교수학습 플랫폼 바당 현황 및 개선 방안」 — 본 덱의 전편(현황 진단)</a>.</li>
-        <li><a href="paradigm.html">「AI 교육 패러다임」 — 왜·무엇을(본 개발안은 그 실현·구현)</a>.</li>
-        <li><a href="bloom-2sigma.html">「고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경」 — 블룸 2σ·완전학습 루프의 이론적 뿌리</a>.</li>
-        <li>「운영 계획으로 본 바당 격차·타당성」 · 「유사 플랫폼 리뷰」 · 「외부 LLM 전송의 개인정보보호법 쟁점」 · 「세션정책」 · 「현행 교직원 AI 업무 서비스 기능 분석」(내부 문서).</li>
-        <li><a href="https://en.wikipedia.org/wiki/Ed_(chatbot)" target="_blank" rel="noopener">Ed (chatbot) — Wikipedia. LAUSD AI 비서 ‘Ed’(AllHere)의 2024.3. 출시·중단, 학생 데이터 처리 논란 정리.</a></li>
-      </ol>
-      <div class="cite"><b>약어</b> — 바당2(BADANG2, 「제주교육AI플랫폼」) · AIEP(인공지능 맞춤형 교수학습 플랫폼=바당) · LMS(학습관리시스템) · LRS(학습기록저장소) · xAPI(학습활동 기록 표준 — 환류는 전면시행 옵션) · LTI(외부 학습 도구 실행 표준) · OneRoster(명부 표준) · SAML(SSO 인증 표준) · MCP(AI-도구 연결 프로토콜) · QTI(문항 표준) · CASE(성취기준 표준) · hwpx(개방형 한글 문서, KS X 6101 — 2026.10. 공공기관 기본 포맷) · PII(개인식별정보) · DPA(개인정보 처리 계약) · NER(개체명 인식) · CPO(개인정보 보호책임자) · FP(기능점수) · ISMP(정보시스템 마스터플랜 — 개발TF 자체 수행) · RFP(제안요청서) · T0(예산 성립 시점, 2027.1.1.) · SLA(서비스 수준 협약) · MVP(최소기능제품) · PIA(개인정보 영향평가) · CSAP(클라우드 보안인증)</div>
-      <div class="srcline">원문: 「제주교육AI플랫폼(바당2) 개요」(badang2-plan.html) · 본 덱은 「개요 — 간결판」의 목차를 그대로 따른다 · 제주도교육감직인수위원회 미래학력분과</div>
-    </div>
-  </section>
-
-  <!-- 35 부록: 벤더 챗앱 ↔ 바당2 기능 대응표 (질의응답용 — 발표 시 건너뛰는 슬라이드) -->
+  <!-- 34 부록: 벤더 챗앱 ↔ 바당2 기능 대응표 (질의응답용 — 발표 시 건너뛰는 슬라이드) -->
   <section class="slide light content tight">
     <div class="head">
       <div class="kicker">부록 — "벤더 앱에서 쓰던 거, 여기서도 돼요?"</div>
@@ -1273,6 +1253,28 @@ body.tools-on .ftools{display:flex}
         </table>
       </div>
       <div class="note" style="margin-top:.8rem">벤더 <svg class="st lim" viewBox="0 0 24 24"><use href="#c-lim"/></svg> = 기술적으로는 되나 <b>개인 계정·무통제</b>(키 개인 관리 · 응답이 비식별 없이 벤더로). 차별점은 기능 유무가 아니라 <b>통제</b> — 같은 기능이 코어 게이트웨이(로깅·비식별·안전필터·감사) 뒤에서 돈다.</div>
+    </div>
+  </section>
+
+  <!-- 35 출처 -->
+  <section class="slide light content">
+    <div class="head">
+      <div class="kicker">출처</div>
+      <h2>근거 문서</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="bodyarea">
+      <ol class="refs">
+        <li>「인공지능 맞춤형 교수학습 플랫폼 구축 현안 사항」, 제주특별자치도교육청 디지털미래기획과 (’26.6.) — §1 다섯 공백·§2 시스템 구성도의 근거.</li>
+        <li>「2026 바당 운영 기본 계획(안)」 · 「AIEP 사용자 매뉴얼」 — §1 다섯 공백의 직접 진술.</li>
+        <li><a href="badang-status.html">「인공지능 맞춤형 교수학습 플랫폼 바당 현황 및 개선 방안」 — 본 덱의 전편(현황 진단)</a>.</li>
+        <li><a href="paradigm.html">「AI 교육 패러다임」 — 왜·무엇을(본 개발안은 그 실현·구현)</a>.</li>
+        <li><a href="bloom-2sigma.html">「고의숙 교육감의 초개별화 맞춤형 교육 이론적 배경」 — 블룸 2σ·완전학습 루프의 이론적 뿌리</a>.</li>
+        <li>「운영 계획으로 본 바당 격차·타당성」 · 「유사 플랫폼 리뷰」 · 「외부 LLM 전송의 개인정보보호법 쟁점」 · 「세션정책」 · 「현행 교직원 AI 업무 서비스 기능 분석」(내부 문서).</li>
+        <li><a href="https://en.wikipedia.org/wiki/Ed_(chatbot)" target="_blank" rel="noopener">Ed (chatbot) — Wikipedia. LAUSD AI 비서 ‘Ed’(AllHere)의 2024.3. 출시·중단, 학생 데이터 처리 논란 정리.</a></li>
+      </ol>
+      <div class="cite"><b>약어</b> — 바당2(BADANG2, 「제주교육AI플랫폼」) · AIEP(인공지능 맞춤형 교수학습 플랫폼=바당) · LMS(학습관리시스템) · LRS(학습기록저장소) · xAPI(학습활동 기록 표준 — 환류는 전면시행 옵션) · LTI(외부 학습 도구 실행 표준) · OneRoster(명부 표준) · SAML(SSO 인증 표준) · MCP(AI-도구 연결 프로토콜) · QTI(문항 표준) · CASE(성취기준 표준) · hwpx(개방형 한글 문서, KS X 6101 — 2026.10. 공공기관 기본 포맷) · PII(개인식별정보) · DPA(개인정보 처리 계약) · NER(개체명 인식) · CPO(개인정보 보호책임자) · FP(기능점수) · ISMP(정보시스템 마스터플랜 — 개발TF 자체 수행) · RFP(제안요청서) · T0(예산 성립 시점, 2027.1.1.) · SLA(서비스 수준 협약) · MVP(최소기능제품) · PIA(개인정보 영향평가) · CSAP(클라우드 보안인증)</div>
+      <div class="srcline">원문: 「제주교육AI플랫폼(바당2) 개요」(badang2-plan.html) · 본 덱은 「개요 — 간결판」의 목차를 그대로 따른다 · 제주도교육감직인수위원회 미래학력분과</div>
     </div>
   </section>
 
